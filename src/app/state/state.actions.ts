@@ -1,10 +1,12 @@
 import {Action} from '@ngrx/store';
-import {Student} from '../model/student';
-import {Project} from '../model/project';
+import {Student} from '../core/model/student';
+import {Project} from '../core/model/project';
 
 export enum StateActionsTypes {
   AssignProject = '[Student] Assign project',
   RemoveProject = '[Student] Remove Product',
+
+  LoadStudents = '[Student] Load Students',
 
 }
 

@@ -12,4 +12,4 @@ import { StudentProjectsComponent } from './student-projects.component';
     CommonModule
   ]
 })
-export class StudentsModule { }
+export class StudentsModule {}

@@ -1,12 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {ToolbarComponent} from './toolbar/toolbar.component';
+import {RouterModule} from '@angular/router';
+import {MatButtonModule, MatToolbarModule} from '@angular/material';
+import {LocalStorageService} from './local-storage.service';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreModule} from '@ngrx/store';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ToolbarComponent
+  ],
+  exports: [
+    ToolbarComponent
+  ],
+  providers: [
+    LocalStorageService
+  ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule,
+    MatToolbarModule,
+    MatButtonModule
+  ],
+
 })
 export class CoreModule { }

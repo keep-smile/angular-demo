@@ -1,4 +1,4 @@
-import {Student} from '../model/student';
+import {Student} from '../core/model/student';
 
 import {StateActions, StateActionsTypes} from './state.actions';
 
