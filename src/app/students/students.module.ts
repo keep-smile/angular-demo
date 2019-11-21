@@ -3,7 +3,13 @@ import { CommonModule } from '@angular/common';
 import { StudentsListComponent } from './students-list.component';
 import { StudentDetailComponent } from './student-detail.component';
 import { StudentProjectsComponent } from './student-projects.component';
-import {MatDividerModule, MatIconModule, MatListModule, MatProgressSpinnerModule} from '@angular/material';
+import {
+  MatDividerModule,
+  MatIconModule,
+  MatListModule,
+  MatProgressSpinnerModule,
+  MatToolbarModule
+} from '@angular/material';
 import {RouterModule} from '@angular/router';
 
 
@@ -13,6 +19,7 @@ import {RouterModule} from '@angular/router';
     CommonModule,
     MatListModule,
     MatDividerModule,
+    MatToolbarModule,
     MatIconModule,
     RouterModule,
     MatProgressSpinnerModule,
