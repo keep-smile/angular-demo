@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Student} from './model/student';
 import {Project} from './model/project';
 
-// This service simulates backend API and use Local Storage interface
+// This service simulates backend API service and use Local Storage interface
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +53,7 @@ export class LocalStorageService {
 
 
 const initialStudents = [
-  {id: 1, name: 'Brian Robert', projects: []}
+  {id: 1, name: 'Brian Robert', projects: [1]}
 ];
 
 const initialProjects = [

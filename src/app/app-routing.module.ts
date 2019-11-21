@@ -7,6 +7,12 @@ import {StudentsListComponent} from './students/students-list.component';
 const appRoutes: Routes = [
 
   { path: 'students', component: StudentsListComponent },
+  {
+    path: 'projects',
+    data: { preload: false },
+    loadChildren: () =>
+      import('./projects/projects.module').then(m => m.ProjectsModule)
+  },
   { path: '', redirectTo: 'students', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
