@@ -1,1 +1,22 @@
-<p>students-list works!</p>
+<h2>{{sectionTitle}}</h2>
+<mat-divider></mat-divider>
+<div *ngIf="students$ | async as students; else elseBlock">
+  <mat-list>
+    <mat-list-item *ngFor="let student of students" >
+      <img matListAvatar src="/assets/students/student{{student.id}}.jpeg" alt="{{student.name}} Avatar">
+      <h3 matLine> <a [routerLink]="['/students', student.id]">{{student.name}}</a></h3>
+      <p matLine>
+        <span>ID: {{student.id}} </span>
+
+      </p>
+      <a [routerLink]="['/students', student.id]"><mat-icon>more_vert</mat-icon></a>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>
+<ng-template #elseBlock>
+  <mat-spinner></mat-spinner>
+</ng-template>
+
+
+

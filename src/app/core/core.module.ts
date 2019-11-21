@@ -2,10 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ToolbarComponent} from './toolbar/toolbar.component';
 import {RouterModule} from '@angular/router';
-import {MatButtonModule, MatListModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatListModule, MatProgressSpinnerModule, MatToolbarModule} from '@angular/material';
 import {LocalStorageService} from './local-storage.service';
-import {StoreModule} from '@ngrx/store';
-
 
 
 @NgModule({
@@ -13,18 +11,18 @@ import {StoreModule} from '@ngrx/store';
     ToolbarComponent
   ],
   exports: [
-    ToolbarComponent
+    ToolbarComponent,
   ],
   providers: [
     LocalStorageService
   ],
   imports: [
-    StoreModule,
     CommonModule,
     RouterModule,
     MatToolbarModule,
     MatButtonModule,
     MatListModule,
+
   ],
 
 })
