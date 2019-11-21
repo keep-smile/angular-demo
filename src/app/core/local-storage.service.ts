@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Student} from './model/student';
 import {Project} from './model/project';
+import {Observable} from 'rxjs';
 
 // This service simulates backend API service and use Local Storage interface
 
@@ -20,16 +21,25 @@ export class LocalStorageService {
   }
 
 
-  getAllStudents(): Student[] | null {
-    return null;
+  getAllStudents(): Observable<Student[]> | null {
+
+    return new Observable(observer => {
+      setInterval(() => {
+        observer.next( this.get('students'));
+      }, 1000)
+    })
   }
 
   getStudent(id: number): Student | null {
     return null;
   }
 
-  getAllProjects(): Project[] | null {
-    return null;
+  getAllProjects(): Observable<Project[]> | null {
+    return new Observable(observer => {
+      setInterval(() => {
+        observer.next( this.get('projects'));
+      }, 1000)
+    })
   }
 
   private set(key: string, data: any): void {
