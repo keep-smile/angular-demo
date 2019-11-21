@@ -1,5 +1,5 @@
 export class Student {
   id: number;
-  name: number;
+  name: string;
   projects: number[] | null;
 }
