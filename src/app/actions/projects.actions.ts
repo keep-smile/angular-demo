@@ -1,15 +1,36 @@
-import { createAction, props } from '@ngrx/store';
+import { Action } from '@ngrx/store';
 
-export const loadProjectss = createAction(
-  '[Projects] Load Projectss'
-);
+import {Projects} from '@angular/cli/lib/config/schema';
+import {Project} from '../core/model/project';
 
-export const loadProjectssSuccess = createAction(
-  '[Projects] Load Projectss Success',
-  props<{ data: any }>()
-);
+export enum ProjectsActionTypes {
+  LoadProjects = '[Projects] Load Projects',
+  LoadProjectsError = '[Projects] Projects Load Error',
+}
 
-export const loadProjectssFailure = createAction(
-  '[Projects] Load Projectss Failure',
-  props<{ error: any }>()
-);
+export class ProjectsAction implements Action {
+  type: string;
+  payload: {
+    projects: Project[] | null,
+    error: string | null
+  };
+}
+
+export class LoadProjects implements Action {
+  readonly type = ProjectsActionTypes.LoadProjects;
+
+  constructor(readonly payload: {projects: Projects[]}) {
+
+  }
+}
+
+export class LoadProjectsError implements Action {
+  readonly type = ProjectsActionTypes.LoadProjectsError;
+
+  constructor(readonly payload: {error: string}) {
+
+  }
+}
+
+
+export type ActionsUnion = LoadProjects | LoadProjectsError;

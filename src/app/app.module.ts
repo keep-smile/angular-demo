@@ -8,11 +8,11 @@ import {CoreModule} from './core/core.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {AppRoutingModule} from './app-routing.module';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers, metaReducers, reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StudentsEffects } from './effects/students.effects';
 import { ProjectsEffects } from './effects/projects.effects';
+import {metaReducers, reducers} from './reducers';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { ProjectsEffects } from './effects/projects.effects';
     AppRoutingModule,
     CoreModule,
     BrowserAnimationsModule,
-    EffectsModule.forRoot([ StudentsEffects, StudentsEffects, ProjectsEffects]),
+    EffectsModule.forRoot([ StudentsEffects, ProjectsEffects]),
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
@@ -33,13 +33,6 @@ import { ProjectsEffects } from './effects/projects.effects';
       }
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreModule.forRoot(reducers, {
-      metaReducers, 
-      runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true,
-      }
-    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
