@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Student} from './model/student';
 import {Project} from './model/project';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 
 // This service simulates backend API service and use Local Storage interface
 
@@ -24,10 +24,11 @@ export class LocalStorageService {
   getAllStudents(): Observable<Student[]> | null {
 
     return new Observable(observer => {
-      setInterval(() => {
+      setTimeout(() => {
+        console.log('Students API Request triggered');
         observer.next( this.get('students'));
       }, 1000)
-    })
+    });
   }
 
   getStudent(id: number): Student | null {
@@ -36,7 +37,8 @@ export class LocalStorageService {
 
   getAllProjects(): Observable<Project[]> | null {
     return new Observable(observer => {
-      setInterval(() => {
+      console.log('Students API Request triggered');
+      setTimeout(() => {
         observer.next( this.get('projects'));
       }, 1000)
     })
@@ -63,9 +65,15 @@ export class LocalStorageService {
 
 
 const initialStudents = [
-  {id: 1, name: 'Brian Robert', projects: [1]}
+  {id: 1, name: 'Brian Robert', projects: [1,2]},
+  {id: 2, name: 'Joan Justin', projects: [1,3,4]},
+  {id: 3, name: 'Andre Peterson', projects: [1,4]},
+  {id: 4, name: 'Luisa Darlington', projects: [3,2]},
 ];
 
 const initialProjects = [
-  {id: 1, title: 'Chemical Research'}
+  {id: 1, title: 'Chemical Research'},
+  {id: 2, title: 'Medical Internature'},
+  {id: 3, title: 'Math Research'},
+  {id: 4, title: 'Soccer Tournaments'},
 ];

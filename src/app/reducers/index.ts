@@ -37,7 +37,12 @@ export interface AppState {
 
 export function studentsReducer(state: StudentsState = initialStudentsState, action: StudentsAction): StudentsState {
   switch (action.type) {
-    case StudentsActionTypes.LoadStudents:
+    case StudentsActionTypes.LoadStudentsSuccess:
+      
+      console.log(action);
+      
+      
+      
       return {...state,
         students: action.payload.students
       };
@@ -72,7 +77,11 @@ export const reducers: ActionReducerMap<AppState> = {
   projects: projectsReducer
 };
 
-export const selectStudents = (state: AppState) => state.students.students;
+export const selectStudents = (state: AppState) => {
+  console.log('selector triggered', state.students.students);
+
+ return state.students.students;
+};
 export const selectProjects = (state: AppState) => state.projects.projects;
 
 

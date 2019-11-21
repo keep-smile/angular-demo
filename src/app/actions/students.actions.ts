@@ -21,7 +21,15 @@ export class StudentsAction implements Action {
 export class LoadStudents implements Action {
   readonly type = StudentsActionTypes.LoadStudents;
 
-  constructor(readonly payload: {students: Student[]}) {
+  constructor(readonly payload: {students: Student[] | null}) {
+
+  }
+}
+
+export class LoadStudentsSuccess implements Action {
+  readonly type = StudentsActionTypes.LoadStudentsSuccess;
+
+  constructor(readonly payload: {students: Student[] | null}) {
 
   }
 }
@@ -35,4 +43,4 @@ export class LoadStudentsError implements Action {
 }
 
 
-export type ActionsUnion = LoadStudents | LoadStudentsError;
+export type ActionsUnion = LoadStudents | LoadStudentsError | LoadStudentsSuccess;

@@ -5,7 +5,7 @@ import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
 
 import { of } from 'rxjs';
-import {LoadStudents, LoadStudentsError, StudentsActionTypes} from '../actions/students.actions';
+import {LoadStudents, LoadStudentsError, LoadStudentsSuccess, StudentsActionTypes} from '../actions/students.actions';
 import {LocalStorageService} from '../core/local-storage.service';
 
 @Injectable()
@@ -18,7 +18,7 @@ export class StudentsEffects {
       mergeMap((action) => this.apiService.getAllStudents()
         .pipe(
           map(students => {
-            return (new LoadStudents({students: students}));
+            return (new LoadStudentsSuccess({students: students}));
           }),
           catchError((errorMessage) => of(new LoadStudentsError({error: errorMessage})))
         ))
