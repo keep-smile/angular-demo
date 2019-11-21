@@ -2,11 +2,12 @@
 - Basic two modules with Student and available Projects
 - Material Design library
 - NGRX as Storage management mechanism
-- GitHub as application hosting
+- GitHub as hosting with deployment process
 
 
 # Progect details
 
+Demo Application hosted on the GitHub page: https://keep-smile.github.io/
 
 
 ## Run details
@@ -19,7 +20,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-
+Run `npm run deploy` to build project in prod mode and push to the GitHub pages service repository ( will not work - requires permissions ) 
 
 ## Running end-to-end tests
 
