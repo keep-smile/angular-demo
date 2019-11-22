@@ -26,6 +26,14 @@ export class LoadStudents implements Action {
   }
 }
 
+export class SetCurrentStudent implements Action {
+  readonly type = StudentsActionTypes.SetCurrentStudent;
+
+  constructor(readonly payload: {currentStudent: Student[] | null | number}) {
+
+  }
+}
+
 export class LoadStudentsSuccess implements Action {
   readonly type = StudentsActionTypes.LoadStudentsSuccess;
 

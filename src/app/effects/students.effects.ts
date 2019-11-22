@@ -20,7 +20,11 @@ export class StudentsEffects {
           map(students => {
             return (new LoadStudentsSuccess({students: students}));
           }),
-          catchError((errorMessage) => of(new LoadStudentsError({error: errorMessage})))
+          catchError((errorMessage) => {
+            console.log('error triggered', errorMessage);
+
+            return of(new LoadStudentsError({error: errorMessage}));
+          })
         ))
     );
 

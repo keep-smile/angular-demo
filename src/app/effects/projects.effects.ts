@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 
 import { of } from 'rxjs';
 import {LocalStorageService} from '../core/local-storage.service';
-import {LoadProjects, LoadProjectsError, ProjectsActionTypes} from '../actions/projects.actions';
+import {LoadProjects, LoadProjectsError, LoadProjectsSuccess, ProjectsActionTypes} from '../actions/projects.actions';
 
 @Injectable()
 export class ProjectsEffects {
@@ -18,7 +18,7 @@ export class ProjectsEffects {
       mergeMap((action) => this.apiService.getAllProjects()
         .pipe(
           map(projects => {
-            return (new LoadProjects({projects: projects}));
+            return (new LoadProjectsSuccess({projects: projects}));
           }),
           catchError((errorMessage) => of(new LoadProjectsError({error: errorMessage})))
         ))

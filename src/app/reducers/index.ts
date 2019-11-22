@@ -1,21 +1,21 @@
-import { ActionReducerMap, MetaReducer, Action} from '@ngrx/store';
-import { environment } from '../../environments/environment';
+import {ActionReducerMap, MetaReducer} from '@ngrx/store';
+import {environment} from '../../environments/environment';
 
 
-import { StudentsActionTypes, StudentsAction } from '../actions/students.actions';
+import {StudentsAction, StudentsActionTypes} from '../actions/students.actions';
 
 import {Student} from '../core/model/student';
 import {Project} from '../core/model/project';
 import {ProjectsAction, ProjectsActionTypes} from '../actions/projects.actions';
 
 export interface StudentsState {
-  currentlySelected: number | null;
+  currentStudent: Student | null;
   students: Student[] | null;
-  error: string| null;
+  error: string | null;
 }
 
 const initialStudentsState: StudentsState = {
-  currentlySelected: null,
+  currentStudent: null,
   students: null,
   error: null
 };
@@ -38,13 +38,39 @@ export interface AppState {
 export function studentsReducer(state: StudentsState = initialStudentsState, action: StudentsAction): StudentsState {
   switch (action.type) {
     case StudentsActionTypes.LoadStudentsSuccess:
-      
+
       console.log(action);
-      
-      
-      
-      return {...state,
+
+      return {
+        ...state,
         students: action.payload.students
+      };
+
+    case StudentsActionTypes.LoadStudentsError:
+
+      console.log(action);
+
+      return {
+        ...state,
+        students: [],
+        error: action.payload.error
+      };
+
+    case StudentsActionTypes.SetCurrentStudent:
+
+      let currentStudent: Student | null;
+      if (typeof action.payload.currentStudent === 'string'
+        && state.students[action.payload.currentStudent]
+        && state.students[+action.payload.currentStudent]
+      ) {
+        currentStudent = state.students[+action.payload.currentStudent];
+      } else {
+        currentStudent = null;
+      }
+
+      return {
+        ...state,
+        currentStudent
       };
 
     default:
@@ -54,14 +80,16 @@ export function studentsReducer(state: StudentsState = initialStudentsState, act
 
 export function projectsReducer(state: ProjectsState = initialProjectsState, action: ProjectsAction): ProjectsState {
   switch (action.type) {
-    case ProjectsActionTypes.LoadProjects:
-      return {...state,
+    case ProjectsActionTypes.LoadProjectsSuccess:
+      return {
+        ...state,
         projects: action.payload.projects,
         error: null
       };
 
     case ProjectsActionTypes.LoadProjectsError:
-      return {...state,
+      return {
+        ...state,
         projects: null,
         error: action.payload.error
       };
@@ -78,12 +106,16 @@ export const reducers: ActionReducerMap<AppState> = {
 };
 
 export const selectStudents = (state: AppState) => {
-  console.log('selector triggered', state.students.students);
-
- return state.students.students;
+  return state.students.students;
 };
-export const selectProjects = (state: AppState) => state.projects.projects;
 
+export const selectCurrentStudent = (state: AppState, projects: Project[]) => {
+
+  console.log('selector triggered', state.students);
+  return state.students.currentStudent;
+};
+
+export const selectProjects = (state: AppState) => state.projects.projects;
 
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [] : [];

@@ -6,6 +6,7 @@ import {Project} from '../core/model/project';
 export enum ProjectsActionTypes {
   LoadProjects = '[Projects] Load Projects',
   LoadProjectsError = '[Projects] Projects Load Error',
+  LoadProjectsSuccess = '[Projects] Projects Load Success',
 }
 
 export class ProjectsAction implements Action {
@@ -32,5 +33,13 @@ export class LoadProjectsError implements Action {
   }
 }
 
+export class LoadProjectsSuccess implements Action {
+  readonly type = ProjectsActionTypes.LoadProjectsSuccess;
 
-export type ActionsUnion = LoadProjects | LoadProjectsError;
+  constructor(readonly payload: {projects: Projects[]}) {
+
+  }
+}
+
+
+export type ActionsUnion = LoadProjects | LoadProjectsError | LoadProjectsSuccess;
