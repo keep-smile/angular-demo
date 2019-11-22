@@ -4,5 +4,28 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 main{
-  padding: 1em 1.5em;
+  padding: 0em 1.5em;
 }
+
+.section-title a{
+  text-decoration: none;
+  font-weight: normal;
+  margin-right: 1em;
+}
+.section-title{
+  font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  font-weight: bold;
+  margin: 0;
+  padding: 28px 0px 10px;
+  font-size: 20px;
+  /*color: #fff;*/
+
+}
+.section-title.bold{
+  font-weight: bold;
+}
+.mat-list-item-content,
+.mat-list-base .mat-list-item .mat-list-item-content{
+  margin: 0 -16px ;
+}
+

@@ -6,10 +6,10 @@ import { StudentProjectsComponent } from './student-projects.component';
 import {
   MatButtonModule,
   MatCardLgImage, MatCardModule, MatCardTitle,
-  MatDividerModule, MatGridListModule,
+  MatDividerModule, MatFormFieldModule, MatGridListModule,
   MatIconModule,
-  MatListModule,
-  MatProgressSpinnerModule,
+  MatListModule, MatMenuModule,
+  MatProgressSpinnerModule, MatSelectModule, MatSidenavModule,
   MatToolbarModule
 } from '@angular/material';
 import {RouterModule} from '@angular/router';
@@ -19,9 +19,13 @@ import {RouterModule} from '@angular/router';
   declarations: [StudentsListComponent, StudentDetailComponent, StudentProjectsComponent],
   imports: [
     CommonModule,
+    MatMenuModule,
+    MatSidenavModule,
     MatListModule,
     MatDividerModule,
     MatToolbarModule,
+    MatFormFieldModule,
+    MatSelectModule,
     MatIconModule,
     RouterModule,
     MatGridListModule,

@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Project} from '../core/model/project';
-import {AppState} from '../reducers';
-import {Store} from '@ngrx/store';
+import {AppState, selectProjects, selectStudents} from '../reducers';
+import {select, Store} from '@ngrx/store';
 import {UnEngageProject} from '../actions/students.actions';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-student-projects',
@@ -12,6 +13,7 @@ import {UnEngageProject} from '../actions/students.actions';
 export class StudentProjectsComponent implements OnInit {
 
   sectionTitle = 'Projects';
+  projects$: Observable<Project[]>;
   @Input() projects: Project[];
 
   constructor(
@@ -20,6 +22,7 @@ export class StudentProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.projects$ = this.store.pipe(select(selectProjects));
   }
 
   unEngage(projectId: number) {

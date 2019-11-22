@@ -1,18 +1,22 @@
-<h2>{{sectionTitle}}</h2>
-<mat-divider></mat-divider>
-<div *ngIf="students$ | async as students; else elseBlock">
+<header>
+  <h2 class="section-title ">{{sectionTitle}}</h2>
+  <mat-divider></mat-divider>
+</header>
+<div *ngIf="students$ | async as students">
   <mat-list>
-    <mat-list-item *ngFor="let student of students" >
+    <mat-list-item *ngFor="let student of students">
       <img matListAvatar src="/assets/students/student{{student.id}}.jpeg" alt="{{student.name}} icon">
-      <h3 matLine> <a [routerLink]="['/students', student.id]">{{student.name}}</a></h3>
+      <h3 matLine><a [routerLink]="['/students', student.id]">{{student.name}}</a></h3>
       <p matLine>
         <span>ID: {{student.id}} </span>
       </p>
-      <a [routerLink]="['/students', student.id]"><mat-icon>more_vert</mat-icon></a>
+      <div class="vm-50 align-right">
+          {{student.projects.length}} projects in schedule
+      </div>
+      <a mat-icon-button [routerLink]="['/students', student.id]">
+        <mat-icon>more_vert</mat-icon>
+      </a>
       <mat-divider></mat-divider>
     </mat-list-item>
   </mat-list>
 </div>
-<ng-template #elseBlock>
-  <mat-spinner diameter="100" class="margin-2"></mat-spinner>
-</ng-template>

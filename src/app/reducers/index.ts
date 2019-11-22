@@ -83,11 +83,9 @@ export function studentsReducer(state: StudentsState = initialStudentsState, act
     case StudentsActionTypes.SetCurrentStudent:
 
       let currentStudent: Student | null;
-      if (typeof action.payload.currentStudent === 'string'
-        && state.students[action.payload.currentStudent]
-        && state.students[+action.payload.currentStudent]
-      ) {
-        currentStudent = state.students[+action.payload.currentStudent];
+      if (typeof action.payload.currentStudent === 'string') {
+        // currentStudent = state.students[+action.payload.currentStudent];
+        currentStudent = state.students.find((student: Student) => student.id === +action.payload.currentStudent );
       } else {
         currentStudent = null;
       }
