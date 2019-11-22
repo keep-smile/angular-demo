@@ -24,9 +24,6 @@ export class StudentsListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.store.dispatch(new LoadStudents({students: null}));
-    // this.store.dispatch(new LoadProjects({projects: null}));
-
     this.students$ = this.store.pipe(select(selectStudents));
 
   }

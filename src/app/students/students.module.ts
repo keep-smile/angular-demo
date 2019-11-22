@@ -4,6 +4,7 @@ import { StudentsListComponent } from './students-list.component';
 import { StudentDetailComponent } from './student-detail.component';
 import { StudentProjectsComponent } from './student-projects.component';
 import {
+  MatButtonModule,
   MatCardLgImage, MatCardModule, MatCardTitle,
   MatDividerModule, MatGridListModule,
   MatIconModule,
@@ -24,6 +25,7 @@ import {RouterModule} from '@angular/router';
     MatIconModule,
     RouterModule,
     MatGridListModule,
+    MatButtonModule,
     MatCardModule,
     MatProgressSpinnerModule,
   ]

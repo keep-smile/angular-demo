@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Student} from '../core/model/student';
 import {Project} from '../core/model/project';
+import {AppState} from '../reducers';
+import {Store} from '@ngrx/store';
+import {UnEngageProject} from '../actions/students.actions';
 
 @Component({
   selector: 'app-student-projects',
@@ -11,9 +13,17 @@ export class StudentProjectsComponent implements OnInit {
 
   sectionTitle = 'Projects';
   @Input() projects: Project[];
-  constructor() { }
+
+  constructor(
+    private store: Store<AppState>
+  ) {
+  }
 
   ngOnInit() {
+  }
+
+  unEngage(projectId: number) {
+    this.store.dispatch(new UnEngageProject({projectId: projectId}));
   }
 
 }

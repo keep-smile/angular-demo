@@ -56,6 +56,30 @@ export function studentsReducer(state: StudentsState = initialStudentsState, act
         error: action.payload.error
       };
 
+    case StudentsActionTypes.UnEngageProject:
+
+
+      let studentsState = [...state.students];
+
+
+      let currentStudentSate = Object.assign({}, state.currentStudent);
+      let currentStudentProjects = [...currentStudentSate.projects];
+
+      currentStudentSate.projects = currentStudentProjects.filter(val => val !== action.payload.projectId);
+
+      studentsState = studentsState.map((student: Student) => {
+        if (student.id === currentStudentSate.id) {
+          return currentStudentSate;
+        }
+        return student;
+      });
+
+      return {
+        ...state,
+        students: studentsState,
+        currentStudent: currentStudentSate
+      };
+
     case StudentsActionTypes.SetCurrentStudent:
 
       let currentStudent: Student | null;

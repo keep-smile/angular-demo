@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Student} from './model/student';
 import {Project} from './model/project';
-import {Observable, of} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 
 // This service simulates backend API service and use Local Storage interface
 
@@ -21,12 +21,22 @@ export class LocalStorageService {
   }
 
 
-  getAllStudents(): Observable<Student[]> | null {
+  getAllStudents(): Observable<Student[] | any> {
 
     return new Observable(observer => {
       setTimeout(() => {
         console.log('Students API Request triggered');
-        observer.next( this.get('students'));
+
+        if (!this.get('failedRequest')) {
+          this.set('failedRequest', true);
+          observer.next(throwError('oops!'));
+          // throw Observable.throw('Ok, it happens. Let\'s try again')
+        } else {
+          observer.next(
+            this.get('students')
+          );
+        }
+
       }, 1000)
     });
   }
@@ -39,8 +49,16 @@ export class LocalStorageService {
     return new Observable(observer => {
       console.log('Students API Request triggered');
       setTimeout(() => {
-        observer.next( this.get('projects'));
-      }, 1000)
+        if (!this.get('failedRequest')) {
+          // this.set('failedRequest', true);
+          alert(1)
+          return throwError('Ok, it happens. Let\'s try again');
+        } else {
+          observer.next(
+            this.get('projects')
+          );
+        }
+      }, 2000)
     })
   }
 
@@ -65,10 +83,32 @@ export class LocalStorageService {
 
 
 const initialStudents = [
-  {id: 1, name: 'Brian Robert', projects: [1,2]},
-  {id: 2, name: 'Joan Justin', projects: [1,3,4]},
-  {id: 3, name: 'Andre Peterson', projects: [1,4]},
-  {id: 4, name: 'Luisa Darlington', projects: [3,2]},
+  {
+    id: 1, name: 'Brian Robert',
+    projects: [
+      {id: 1, title: 'Chemical Research'},
+      {id: 2, title: 'Medical Internature'}
+    ]
+  },
+  {
+    id: 2, name: 'Joan Justin', projects: [
+      {id: 1, title: 'Chemical Research'},
+      {id: 3, title: 'Math Research'},
+      {id: 4, title: 'Soccer Tournaments'}
+    ]
+  },
+  {
+    id: 3, name: 'Andre Peterson', projects: [
+      {id: 1, title: 'Chemical Research'},
+      {id: 4, title: 'Soccer Tournaments'}
+    ]
+  },
+  {
+    id: 4, name: 'Luisa Darlington', projects: [
+      {id: 3, title: 'Math Research'},
+      {id: 2, title: 'Medical Internature'},
+    ]
+  },
 ];
 
 const initialProjects = [

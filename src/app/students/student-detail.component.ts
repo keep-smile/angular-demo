@@ -30,11 +30,6 @@ export class StudentDetailComponent implements OnInit {
 
     this.currentStudentId = this.route.snapshot.params['id'];
 
-    this.store.dispatch(new LoadStudents({students: null}));
-    this.store.dispatch(new LoadProjects({projects: null}));
-
-    // this.currentStudent$ = this.store.pipe(select( selectCurrentStudent));
-
     // Just for Demo purposes
     this.currentStudent$ = this.store.pipe(select((state: AppState) => {
 
@@ -64,14 +59,6 @@ export class StudentDetailComponent implements OnInit {
       }
     }));
 
-    // select<K>(mapFn: (state: T) => K): Observable<K>;
-    this.store.pipe(select(selectStudents)).subscribe((students) => {
-      if (students && students.length) {
-        this.store.dispatch(new SetCurrentStudent({currentStudent: this.currentStudentId}));
-      }
-      //
-
-
-    })
+    this.store.dispatch(new SetCurrentStudent({currentStudent: this.currentStudentId}));
   }
 }
