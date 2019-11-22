@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {ConfirmationDialogComponent} from './shared/confirmation-dialog/confirmation-dialog.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Students and what they do';
+
+  constructor(){
+
+  }
+
 }

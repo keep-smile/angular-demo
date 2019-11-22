@@ -5,7 +5,7 @@ import { StudentDetailComponent } from './student-detail.component';
 import { StudentProjectsComponent } from './student-projects.component';
 import {
   MatButtonModule,
-  MatCardLgImage, MatCardModule, MatCardTitle,
+  MatCardLgImage, MatCardModule, MatCardTitle, MatDialogModule,
   MatDividerModule, MatFormFieldModule, MatGridListModule,
   MatIconModule,
   MatListModule, MatMenuModule,
@@ -13,6 +13,7 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {RouterModule} from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {RouterModule} from '@angular/router';
     MatToolbarModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatDialogModule,
     MatIconModule,
     RouterModule,
     MatGridListModule,

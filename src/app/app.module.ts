@@ -13,11 +13,13 @@ import { environment } from '../environments/environment';
 import { StudentsEffects } from './effects/students.effects';
 import { ProjectsEffects } from './effects/projects.effects';
 import {metaReducers, reducers} from './reducers';
+import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
