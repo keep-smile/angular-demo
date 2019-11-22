@@ -1,0 +1,8 @@
+
+- Active navigation item should be visible
+- Component Decomposition -> SectionTitle to Shared Components
+- Loading animation while waiting as first time visitor
+- Colors by Material theme
+- Architecture optimisation / useless core.module
+- Orgainize Store to one directory
+- Mobile adaptation with the transisions screens ideally

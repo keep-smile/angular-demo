@@ -1,30 +1,35 @@
 # Angular + Material Design Test Project
+
 - Basic two modules with Student and available Projects
 - Material Design library
 - NGRX as Storage management mechanism
 - GitHub as hosting with deployment process
+- Project architecture build by Angular CLI
+- Emulated asynchronous remote backend API
 
 
 ## Project details
 
-Demo Application hosted on the GitHub page: https://keep-smile.github.io/
+Demo Application hosted on the GitHub page: https://keep-smile.github.io
 
 Project shows simulation of the application corresponding for the relationsheep between Students and Projects.
 
 Students can add project which they like or unengage from those ones which are outdated.
 
-All data changes stored in the Local Storage which emulates backend storage.
+Projects can be deleted if no Students subscribed,
+
+All data changes stored in the Local Storage which emulates backend API storage.
 
 Application uses NgRx driven data storage mechanism 
 
-Implements simple CI to the GitHub Pages repository 
-
+Implements simple CI to the GitHub Pages ( https://keep-smile.github.io ) repository 
 
 
 #### Known issues
 
 - Not mobile adapted
 - Not refactored - code duplication  
+- Not optimized Modules imports
 
 
 ### Run details
