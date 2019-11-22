@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {StudentsListComponent} from './students/students-list.component';
+import {StudentDetailComponent} from './students/student-detail.component';
 
 const appRoutes: Routes = [
 
+  { path: 'students/:id', component: StudentDetailComponent },
   { path: 'students', component: StudentsListComponent },
   {
     path: 'projects',

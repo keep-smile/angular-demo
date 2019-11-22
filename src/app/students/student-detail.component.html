@@ -1,1 +1,19 @@
-<p>student-detail works!</p>
+<div *ngIf="currentStudent$ | async as student; else elseBlock">
+  <h2><a [routerLink]="['/students']"> < Back</a> {{student.name}} {{sectionTitle}}</h2>
+  <mat-divider></mat-divider>
+  <mat-card >
+
+    <mat-card-title-group>
+      <mat-card-title>{{student.name}}</mat-card-title>
+      <mat-card-subtitle>3 projects in the list</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content style="display: flex">
+      <img mat-card-lg-image
+           src="/assets/students/student{{student.id}}.jpeg">
+          <app-student-projects [projects] = "student.projects"></app-student-projects>
+    </mat-card-content>
+  </mat-card>
+</div>
+<ng-template #elseBlock>
+  <mat-spinner diameter="100" class="margin-2"></mat-spinner>
+</ng-template>

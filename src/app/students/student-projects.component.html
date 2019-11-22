@@ -1,1 +1,16 @@
-<p>student-projects works!</p>
+<h3>{{sectionTitle}}</h3>
+<div *ngIf="projects; else elseBlock">
+  <mat-list>
+    <mat-list-item *ngFor="let project of projects" >
+      <img matListAvatar src="/assets/students/student{{student.id}}.jpeg" alt="{{project.title}} icon">
+      <h3 matLine> <a [routerLink]="['/students', project.id]">{{project.title}}</a></h3>
+      <p matLine>
+        <span>ID: {{project.id}} </span>
+      </p>
+      <a [routerLink]="['/students', project.id]"><mat-icon>more_vert</mat-icon></a>
+    </mat-list-item>
+  </mat-list>
+</div>
+<ng-template #elseBlock>
+  <mat-spinner diameter="50" class="margin-2"></mat-spinner>
+</ng-template>

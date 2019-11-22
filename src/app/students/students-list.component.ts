@@ -5,6 +5,7 @@ import {Student} from '../core/model/student';
 import {select, Store} from '@ngrx/store';
 import {LoadStudents} from '../actions/students.actions';
 import {AppState, selectStudents} from '../reducers';
+import {LoadProjects} from '../actions/projects.actions';
 
 
 @Component({
@@ -15,7 +16,7 @@ import {AppState, selectStudents} from '../reducers';
 export class StudentsListComponent implements OnInit {
 
   students$: Observable<Student[]>;
-  sectionTitle = 'Students and their engagement details';
+  sectionTitle = 'Students engagement details';
   constructor(
     private store: Store<AppState>
   ) {
@@ -23,10 +24,8 @@ export class StudentsListComponent implements OnInit {
 
   ngOnInit() {
 
-
     this.store.dispatch(new LoadStudents({students: null}));
     // this.store.dispatch(new LoadProjects({projects: null}));
-
 
     this.students$ = this.store.pipe(select(selectStudents));
 
