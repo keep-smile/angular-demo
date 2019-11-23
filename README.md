@@ -30,6 +30,7 @@ Implements simple CI to the GitHub Pages ( https://keep-smile.github.io ) reposi
 - Not mobile adapted
 - Not refactored - code duplication  
 - Not optimized Modules imports
+- Poor Mat Design implementation
 
 
 ### Run details

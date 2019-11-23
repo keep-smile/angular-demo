@@ -1,6 +1,20 @@
 mat-list-item mat-icon{
-  color: red;
+  color: #b00020;
+}
+
+.project-selector{
+  margin-top: -10px;
+}
+
+
+mat-card-title-group .ready-to-engage mat-icon{
+  color: #673ab7;
+}
+mat-card-title-group .not-ready-to-engage mat-icon{
+  color: #b00020;
 }
 mat-card-title-group mat-icon{
-  color: green;
+  color: #018786;
+  transition: all 0.7s ease;
 }
+

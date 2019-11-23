@@ -2,19 +2,30 @@
   <mat-card-title-group>
     <mat-card-title>{{sectionTitle}}</mat-card-title>
 
-    <button mat-icon-button (click)="unEngage(1)">
-      <mat-icon>control_point</mat-icon>
+    <div [className]="projectSelected ? 'ready-to-engage project-selector' : 'project-selector'">
+
+    <mat-form-field *ngIf="projects$ | async as allProjects">
+      <mat-label>Select Project</mat-label>
+      <mat-select [(value)]="projectSelected" >
+        <mat-option *ngFor="let project of allProjects" [value]="project.id">
+          {{project.title}}
+        </mat-option>
+      </mat-select>
+
+    </mat-form-field>
+    <button mat-icon-button  (click)="doProjectEngagement(projectSelected)">
+      <mat-icon >control_point</mat-icon>
     </button>
+    </div>
   </mat-card-title-group>
   <mat-card-content>
-    <div *ngIf="projects;">
+    <div *ngIf="projects">
       <mat-list>
         <mat-list-item *ngFor="let project of projects">
           <h3 matLine><a [routerLink]="['/students', project.id]">{{project.title}}</a></h3>
           <button mat-icon-button (click)="unEngage(project.id)">
             <mat-icon>highlight_off</mat-icon>
           </button>
-
         </mat-list-item>
       </mat-list>
     </div>

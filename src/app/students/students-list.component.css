@@ -13,3 +13,6 @@
 .percent-20 {
   width: 20%;
 }
+.mat-list-item-content{
+  margin: 0 !important;
+}

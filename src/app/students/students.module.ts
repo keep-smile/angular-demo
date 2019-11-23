@@ -13,12 +13,12 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {RouterModule} from '@angular/router';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [StudentsListComponent, StudentDetailComponent, StudentProjectsComponent],
   imports: [
+    OverlayModule,
     CommonModule,
     MatMenuModule,
     MatSidenavModule,
@@ -33,6 +33,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatGridListModule,
     MatButtonModule,
     MatCardModule,
+    MatGridListModule,
     MatProgressSpinnerModule,
   ]
 })

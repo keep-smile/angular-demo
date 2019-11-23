@@ -11,13 +11,15 @@ import {Project} from '../core/model/project';
 @Component({
   selector: 'app-student-detail',
   templateUrl: './student-detail.component.html',
-  styleUrls: ['./student-detail.component.css']
+  styleUrls: ['./student-detail.component.scss']
 })
 export class StudentDetailComponent implements OnInit {
 
   currentStudent$ = new Observable<Student | null | number>();
   currentStudentId: number;
   sectionTitle = ' > Engagement in details';
+  breakpoint = 5;
+
 
   constructor(
     private store: Store<AppState>,
@@ -26,7 +28,10 @@ export class StudentDetailComponent implements OnInit {
   ) {
   }
 
+
   ngOnInit() {
+
+    this.breakpoint = (window.innerWidth <= 450) ? 1 : 5;
 
     this.currentStudentId = this.route.snapshot.params['id'];
 
@@ -60,5 +65,10 @@ export class StudentDetailComponent implements OnInit {
     }));
 
     this.store.dispatch(new SetCurrentStudent({currentStudent: this.currentStudentId}));
+  }
+
+  onResize(event) {
+    this.breakpoint = (event.target.innerWidth <= 450) ? 1 : 5;
+
   }
 }

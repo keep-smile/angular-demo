@@ -1,20 +1,24 @@
 <div *ngIf="currentStudent$ | async as student">
   <header>
-  <h2 class="section-title bold"><a mat-button [routerLink]="['/students']"><mat-icon>arrow_back_ios</mat-icon> Back</a> {{student.name}} {{sectionTitle}}</h2>
-  <mat-divider></mat-divider>
+    <h2 class="section-title bold"><a mat-button [routerLink]="['/students']">
+      <mat-icon>arrow_back_ios</mat-icon>
+      Back</a> {{student.name}} {{sectionTitle}}</h2>
+    <mat-divider></mat-divider>
   </header>
-  <div style="display: flex; padding-top: 1.5em;">
-    <mat-card>
+  <div class="flex-box">
+    <mat-card class="flex-child">
       <mat-card-title-group>
         <mat-card-title>{{student.name}}</mat-card-title>
         <mat-card-subtitle>{{student.projects.length}} projects in the list</mat-card-subtitle>
       </mat-card-title-group>
       <mat-card-content>
-       <figure><img mat-card-lg-image
-             src="/assets/students/student{{student.id}}.jpeg">
-       </figure>
+        <figure>
+          <img mat-card-lg-image
+               src="/assets/students/student{{student.id}}.jpeg">
+        </figure>
       </mat-card-content>
     </mat-card>
-    <app-student-projects [projects]="student.projects"></app-student-projects>
+
+    <app-student-projects class="flex-child" [projects]="student.projects"></app-student-projects>
   </div>
 </div>

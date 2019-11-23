@@ -5,12 +5,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 main{
   padding: 0em 1.5em;
+
+  @media screen and (max-width: 400px) {
+    padding: 0em 14px;
+  }
 }
 
 .section-title a{
   text-decoration: none;
   font-weight: normal;
   margin-right: 1em;
+
+  @media screen and (max-width: 400px) {
+    padding: 0;
+  }
+}
+
+.mat-card-title{
+  @media screen and (max-width: 400px) {
+    font-size: 18px;
+  }
 }
 .section-title{
   font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
@@ -19,13 +33,30 @@ main{
   padding: 28px 0px 10px;
   font-size: 20px;
   /*color: #fff;*/
+  @media screen and (max-width: 400px) {
+    font-size: 16px;
+  }
 
 }
 .section-title.bold{
   font-weight: bold;
 }
-.mat-list-item-content,
-.mat-list-base .mat-list-item .mat-list-item-content{
-  margin: 0 -16px ;
+.mat-card-content .mat-list-base .mat-list-item .mat-list-item-content{
+  margin: 0 -16px !important;
+}
+
+
+app-student-detail .mat-grid-tile .mat-figure {
+  top: unset;
+  left: unset;
+  right: unset;
+  bottom: unset;
+  position: relative;
+  display: initial;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 

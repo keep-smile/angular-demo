@@ -14,6 +14,7 @@ import { StudentsEffects } from './effects/students.effects';
 import { ProjectsEffects } from './effects/projects.effects';
 import {metaReducers, reducers} from './reducers';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
+import {MatDialog, MatDialogModule, MatDialogRef} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
   ],
   imports: [
     BrowserModule,
+    MatDialogModule,
     AppRoutingModule,
     CoreModule,
     BrowserAnimationsModule,
@@ -36,7 +38,14 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
-  providers: [],
+  providers: [{
+    provide: MatDialogRef,
+    useValue: {}
+  },],
+  exports: [
+    ConfirmationDialogComponent
+  ],
+  entryComponents: [ConfirmationDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

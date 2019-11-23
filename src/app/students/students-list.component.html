@@ -1,6 +1,6 @@
 <header>
   <h2 class="section-title ">{{sectionTitle}}</h2>
-  <mat-divider></mat-divider>
+
 </header>
 <div *ngIf="students$ | async as students">
   <mat-list>
@@ -11,7 +11,7 @@
         <span>ID: {{student.id}} </span>
       </p>
       <div class="vm-50 align-right">
-          {{student.projects.length}} projects in schedule
+          {{student.projects.length}} projects scheduled
       </div>
       <a mat-icon-button [routerLink]="['/students', student.id]">
         <mat-icon>more_vert</mat-icon>
