@@ -11,7 +11,7 @@
         <span>ID: {{student.id}} </span>
       </p>
       <div class="vm-50 align-right">
-          {{student.projects.length}} projects scheduled
+          {{student.projects.length}} projects <span class="sm-hidden"> scheduled</span>
       </div>
       <a mat-icon-button [routerLink]="['/students', student.id]">
         <mat-icon>more_vert</mat-icon>

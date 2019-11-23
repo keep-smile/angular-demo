@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Student} from '../core/model/student';
 import {select, Store} from '@ngrx/store';
-import {AppState, selectStudents} from '../reducers';
-import {LoadStudents, SetCurrentStudent} from '../actions/students.actions';
-import {LoadProjects} from '../actions/projects.actions';
+import {AppState, selectStudents} from '../store/reducers';
+import {LoadStudents, SetCurrentStudent} from '../store/actions/students.actions';
+import {LoadProjects} from '../store/actions/projects.actions';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Project} from '../core/model/project';
 
@@ -38,8 +38,6 @@ export class StudentDetailComponent implements OnInit {
     // Just for Demo purposes
     this.currentStudent$ = this.store.pipe(select((state: AppState) => {
 
-      console.log('Current User selector triggered', state);
-
       if (state.students.currentStudent && state.projects.projects && state.projects.projects.length) {
 
         const currentStudent =  state.students.currentStudent;
@@ -54,8 +52,6 @@ export class StudentDetailComponent implements OnInit {
           projectsDetailed.push(project);
 
         });
-
-        console.log('Current Student output', projectsDetailed);
 
         return {...currentStudent, projects: projectsDetailed };
 

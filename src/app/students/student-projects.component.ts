@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Project} from '../core/model/project';
-import {AppState, selectProjects, selectStudents} from '../reducers';
+import {AppState, selectAvailableProjects, selectProjects, selectStudents} from '../store/reducers';
 import {select, Store} from '@ngrx/store';
-import {UnEngageProject} from '../actions/students.actions';
+import {UnEngageProject} from '../store/actions/students.actions';
 import {Observable} from 'rxjs';
 import {ConfirmationDialogComponent} from '../shared/confirmation-dialog/confirmation-dialog.component';
 import {MAT_SELECT_SCROLL_STRATEGY, MatDialog} from '@angular/material';
@@ -23,8 +23,9 @@ export function scrollFactory(overlay: Overlay): () => BlockScrollStrategy {
 export class StudentProjectsComponent implements OnInit {
 
   sectionTitle = 'Projects';
-  projects$: Observable<Project[]>;
+  availableProjects$: Observable<Project[]>;
   projectSelected: number | null;
+  engagementError: boolean;
 
   @Input() projects: Project[];
 
@@ -35,25 +36,31 @@ export class StudentProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.projects$ = this.store.pipe(select(selectProjects));
+    this.availableProjects$ = this.store.pipe(select(selectAvailableProjects));
   }
 
   unEngage(projectId: number) {
 
   }
 
-  doProjectEngagement(projectId: number){
+  doProjectEngagement(projectId: number | null){
+
+    if(!projectId){
+      this.engagementError = true
+    } else {
+
+      this.store.dispatch(new EngageProject({projectId: projectId}));
+    }
 
   }
 
-  openDialog(projectId: number): void {
+  openUnengageDialog(projectId: number): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
       data: "Do you confirm unengagement from this project?"
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
-        console.log('Yes clicked');
         this.store.dispatch(new UnEngageProject({projectId: projectId}));
       }
     });

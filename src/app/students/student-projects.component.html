@@ -2,12 +2,14 @@
   <mat-card-title-group>
     <mat-card-title>{{sectionTitle}}</mat-card-title>
 
-    <div [className]="projectSelected ? 'ready-to-engage project-selector' : 'project-selector'">
+    <div [className]="projectSelected
+    ? 'ready-to-engage project-selector'
+    : engagementError ? 'not-ready-to-engage project-selector' : 'project-selector'">
 
-    <mat-form-field *ngIf="projects$ | async as allProjects">
+    <mat-form-field *ngIf="availableProjects$ | async as availableProjects" [floatLabel]="engagementError ? 'always' : ''"  [color]="engagementError && projectSelected ? 'warn' : 'primary'">
       <mat-label>Select Project</mat-label>
       <mat-select [(value)]="projectSelected" >
-        <mat-option *ngFor="let project of allProjects" [value]="project.id">
+        <mat-option *ngFor="let project of availableProjects" [value]="project.id">
           {{project.title}}
         </mat-option>
       </mat-select>
@@ -23,7 +25,7 @@
       <mat-list>
         <mat-list-item *ngFor="let project of projects">
           <h3 matLine><a [routerLink]="['/students', project.id]">{{project.title}}</a></h3>
-          <button mat-icon-button (click)="unEngage(project.id)">
+          <button mat-icon-button (click)="openUnengageDialog(project.id)">
             <mat-icon>highlight_off</mat-icon>
           </button>
         </mat-list-item>

@@ -25,8 +25,6 @@ export class LocalStorageService {
 
     return new Observable(observer => {
       setTimeout(() => {
-        console.log('Students API Request triggered');
-
         if (!this.get('failedRequest')) {
           this.set('failedRequest', true);
           observer.next(throwError('oops!'));
@@ -47,7 +45,6 @@ export class LocalStorageService {
 
   getAllProjects(): Observable<Project[]> | null {
     return new Observable(observer => {
-      console.log('Students API Request triggered');
       setTimeout(() => {
         if (!this.get('failedRequest')) {
           // this.set('failedRequest', true);

@@ -16,3 +16,9 @@
 .mat-list-item-content{
   margin: 0 !important;
 }
+
+@media screen and (max-width: 400px) {
+  .sm-hidden{
+    display: none;
+  }
+}

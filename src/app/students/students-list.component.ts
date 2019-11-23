@@ -3,9 +3,9 @@ import {Observable} from 'rxjs';
 import {Student} from '../core/model/student';
 
 import {select, Store} from '@ngrx/store';
-import {LoadStudents} from '../actions/students.actions';
-import {AppState, selectStudents} from '../reducers';
-import {LoadProjects} from '../actions/projects.actions';
+import {LoadStudents} from '../store/actions/students.actions';
+import {AppState, selectStudents} from '../store/reducers';
+import {LoadProjects} from '../store/actions/projects.actions';
 
 
 @Component({

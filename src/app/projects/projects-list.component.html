@@ -1,1 +1,21 @@
-<p>projects-list works!</p>
+<header>
+  <h2 class="section-title ">{{sectionTitle}}</h2>
+
+</header>
+<div *ngIf="projects$ | async as projects">
+  <mat-list>
+    <mat-list-item *ngFor="let project of projects">
+      <h3 matLine><a [routerLink]="['/students', project.id]">{{project.title}}</a></h3>
+      <p matLine>
+        <span>ID: {{project.id}} </span>
+      </p>
+      <!--<div class="vm-50 align-right">-->
+        <!--{{student.projects.length}} projects in schedule-->
+      <!--</div>-->
+      <a mat-icon-button [routerLink]="['/students', project.id]">
+        <mat-icon>more_vert</mat-icon>
+      </a>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>

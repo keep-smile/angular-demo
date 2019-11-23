@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProjectsListComponent } from './projects-list.component';
 import {ProjectsService} from './projects.service';
 import {ProjectsRoutingModule} from './projects-routing.module';
+import {MatDividerModule, MatIconModule, MatListModule} from '@angular/material';
 
 
 
@@ -10,7 +11,10 @@ import {ProjectsRoutingModule} from './projects-routing.module';
   declarations: [ProjectsListComponent],
   imports: [
     CommonModule,
-    ProjectsRoutingModule
+    ProjectsRoutingModule,
+    MatDividerModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [
     ProjectsService
