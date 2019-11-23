@@ -1,0 +1,11 @@
+mat-spinner{
+  transition: all 1.8s ease;
+
+  position: absolute;
+  top: 30%;
+  left: calc(50vw - 50px);
+
+}
+main{
+  position: relative;
+}

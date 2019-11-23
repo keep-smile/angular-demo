@@ -1,6 +1,8 @@
 <div class="layout">
+  <mat-spinner strokeWidth="10vw" *ngIf="loading" [color]="'black'"></mat-spinner>
   <app-toolbar></app-toolbar>
   <main>
-    <router-outlet></router-outlet>
+    <router-outlet ></router-outlet>
   </main>
 </div>
+<app-footer></app-footer>

@@ -4,14 +4,17 @@ import {ToolbarComponent} from './toolbar/toolbar.component';
 import {RouterModule} from '@angular/router';
 import {MatButtonModule, MatListModule, MatProgressSpinnerModule, MatToolbarModule} from '@angular/material';
 import {LocalStorageService} from './local-storage.service';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   declarations: [
-    ToolbarComponent
+    ToolbarComponent,
+    FooterComponent
   ],
   exports: [
     ToolbarComponent,
+    FooterComponent
   ],
   providers: [
     LocalStorageService

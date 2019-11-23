@@ -3,6 +3,14 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.layout{
+  min-height: 94vh;
+}
+
+.cdk-overlay-pane{
+  margin-top: 15px;
+}
+
 main{
   padding: 0em 1.5em;
 
@@ -36,27 +44,11 @@ main{
   @media screen and (max-width: 400px) {
     font-size: 16px;
   }
-
 }
 .section-title.bold{
   font-weight: bold;
 }
 .mat-card-content .mat-list-base .mat-list-item .mat-list-item-content{
   margin: 0 -16px !important;
-}
-
-
-app-student-detail .mat-grid-tile .mat-figure {
-  top: unset;
-  left: unset;
-  right: unset;
-  bottom: unset;
-  position: relative;
-  display: initial;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 0;
-  margin: 0;
 }
 

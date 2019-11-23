@@ -10,11 +10,13 @@ import {AppRoutingModule} from './app-routing.module';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { StudentsEffects } from './effects/students.effects';
-import { ProjectsEffects } from './effects/projects.effects';
-import {metaReducers, reducers} from './reducers';
+import { StudentsEffects } from './store/effects/students.effects';
+import { ProjectsEffects } from './store/effects/projects.effects';
+import {metaReducers, reducers} from './store/reducers';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
-import {MatDialog, MatDialogModule, MatDialogRef} from '@angular/material';
+import {MatDialog, MatDialogModule, MatDialogRef, MatProgressSpinnerModule} from '@angular/material';
+import {RouterModule} from '@angular/router';
+import {MatProgressBarModule} from '@angular/material/typings/esm5/progress-bar';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,12 @@ import {MatDialog, MatDialogModule, MatDialogRef} from '@angular/material';
   imports: [
     BrowserModule,
     MatDialogModule,
+    MatProgressBarModule,
     AppRoutingModule,
     CoreModule,
+    MatProgressSpinnerModule,
     BrowserAnimationsModule,
+    RouterModule,
     EffectsModule.forRoot([ StudentsEffects, ProjectsEffects]),
     StoreModule.forRoot(reducers, {
       metaReducers,
