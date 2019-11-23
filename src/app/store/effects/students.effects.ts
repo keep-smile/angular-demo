@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 
 import { of } from 'rxjs';
 import {LoadStudents, LoadStudentsError, LoadStudentsSuccess, StudentsActionTypes} from '../actions/students.actions';
-import {LocalStorageService} from '../core/local-storage.service';
+import {LocalStorageService} from '../../core/local-storage.service';
 
 @Injectable()
 export class StudentsEffects {

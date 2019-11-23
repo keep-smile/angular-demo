@@ -1,9 +1,10 @@
 import {Action} from '@ngrx/store';
 
-import {Student} from '../core/model/student';
+import {Student} from '../../core/model/student';
 
 export enum StudentsActionTypes {
   UnEngageProject = '[Students] Unengage Project',
+  EngageProject = '[Students] Engage Project',
   LoadStudents = '[Students] Load Students',
   LoadStudentsError = '[Students] Students Load Error',
   LoadStudentsSuccess = '[Students] Students Load Success',

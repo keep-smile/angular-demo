@@ -5,7 +5,7 @@ import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
 
 import { of } from 'rxjs';
-import {LocalStorageService} from '../core/local-storage.service';
+import {LocalStorageService} from '../../core/local-storage.service';
 import {LoadProjects, LoadProjectsError, LoadProjectsSuccess, ProjectsActionTypes} from '../actions/projects.actions';
 
 @Injectable()

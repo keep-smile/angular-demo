@@ -1,11 +1,11 @@
 import {ActionReducerMap, MetaReducer} from '@ngrx/store';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../environments/environment';
 
 
 import {StudentsAction, StudentsActionTypes} from '../actions/students.actions';
 
-import {Student} from '../core/model/student';
-import {Project} from '../core/model/project';
+import {Student} from '../../core/model/student';
+import {Project} from '../../core/model/project';
 import {ProjectsAction, ProjectsActionTypes} from '../actions/projects.actions';
 
 export interface StudentsState {
@@ -39,16 +39,12 @@ export function studentsReducer(state: StudentsState = initialStudentsState, act
   switch (action.type) {
     case StudentsActionTypes.LoadStudentsSuccess:
 
-      console.log(action);
-
       return {
         ...state,
         students: action.payload.students
       };
 
     case StudentsActionTypes.LoadStudentsError:
-
-      console.log(action);
 
       return {
         ...state,
@@ -132,9 +128,15 @@ export const selectStudents = (state: AppState) => {
 };
 
 export const selectCurrentStudent = (state: AppState, projects: Project[]) => {
-
-  console.log('selector triggered', state.students);
   return state.students.currentStudent;
+};
+
+export const selectAvailableProjects = (state: AppState): Project[] | null => {
+
+  if(state.students.currentStudent && state.students.currentStudent.projects.length){
+    return state.projects.projects.filter(project => !state.students.currentStudent.projects.includes(project.id));
+  }
+  return state.projects.projects;
 };
 
 export const selectProjects = (state: AppState) => state.projects.projects;

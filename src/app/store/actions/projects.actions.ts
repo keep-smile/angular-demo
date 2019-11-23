@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 
 import {Projects} from '@angular/cli/lib/config/schema';
-import {Project} from '../core/model/project';
+import {Project} from '../../core/model/project';
 
 export enum ProjectsActionTypes {
   LoadProjects = '[Projects] Load Projects',
