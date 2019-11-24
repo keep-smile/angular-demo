@@ -1,14 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Student} from '../core/model/student';
 
 import {select, Store} from '@ngrx/store';
-import {LoadStudents} from '../store/actions/students.actions';
-import {AppState, selectProjects, selectStudents} from '../store/reducers';
-import {LoadProjects} from '../store/actions/projects.actions';
-import {Project} from '../core/model/project';
+import {AppState, selectProjects} from '../store/reducers';
+import {CreateProject, DeleteProject, SaveProjects} from '../store/actions/projects.actions';
+import {Project, ProjectWithStudents} from '../core/model/project';
+import {MatDialog, MatSnackBar} from '@angular/material';
+import {AddProjectDialogComponent} from '../shared/add-project-dialog/add-project-dialog.component';
 import {ConfirmationDialogComponent} from '../shared/confirmation-dialog/confirmation-dialog.component';
-import {MatDialog} from '@angular/material';
+import {SaveStudents, UnEngageProject} from '../store/actions/students.actions';
+// import {MatDialog} from '@angular/material';
+// import {AddProjectDialogComponent} from './add-project-dialog/add-project-dialog.component';
 
 
 @Component({
@@ -18,17 +20,79 @@ import {MatDialog} from '@angular/material';
 })
 export class ProjectsListComponent implements OnInit {
 
+  projectsWithStudent$: Observable<ProjectWithStudents[]>;
   projects$: Observable<Project[]>;
   sectionTitle = 'Projects';
+
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {
   }
 
   ngOnInit() {
 
     this.projects$ = this.store.pipe(select(selectProjects));
+    this.projectsWithStudent$ = this.store.pipe(select((store) => {
 
+      return store.projects.projects.map((project): ProjectWithStudents => {
+
+        const projectStudents = store.students.students.filter( student => student.projects.indexOf(project.id) >= 0 )
+
+        return {...project, students: projectStudents};
+      });
+
+    } ));
+
+  }
+
+  createProject() {
+    const dialogRef = this.dialog.open(AddProjectDialogComponent, {
+      width: '350px',
+      data: 'Please complete project data'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+
+        this.store.dispatch(new CreateProject({
+          project: {
+            title: result.projectTitle,
+            description: result.projectDescription,
+            id: 0
+          }
+        }));
+
+        this.store.dispatch(new SaveProjects());
+        this.showSnackBar('You have created new Project', 'New Project')
+      }
+    });
+  }
+
+  showSnackBar(message: string, action: string){
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
+
+  openDeleteDialog(projectId: number): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: 'Do you confirm delete of this project?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.store.dispatch(new DeleteProject({projectId: projectId}));
+
+        console.log('Save products dispatch after dialog close');
+
+
+        this.store.dispatch(new SaveProjects());
+
+        this.showSnackBar('You have deleted the project', 'Deleted')
+
+      }
+    });
   }
 
 

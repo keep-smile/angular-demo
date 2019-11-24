@@ -22,11 +22,13 @@ const initialStudentsState: StudentsState = {
 
 export interface ProjectsState {
   projects: Project[] | null;
+  currentProject: Project | null;
   error: string | null;
 }
 
 const initialProjectsState: ProjectsState = {
   projects: null,
+  currentProject: null,
   error: null
 };
 
@@ -76,12 +78,35 @@ export function studentsReducer(state: StudentsState = initialStudentsState, act
         currentStudent: currentStudentSate
       };
 
+    case StudentsActionTypes.EngageProject: {
+      let studentsState = [...state.students];
+
+      const currentStudentSate = Object.assign({}, state.currentStudent);
+
+      const currentStudentProjectsSate = [...state.currentStudent.projects];
+      currentStudentProjectsSate.push(+action.payload.projectId)
+
+
+      studentsState = studentsState.map((student: Student) => {
+        if (student.id === currentStudentSate.id) {
+          return {...currentStudentSate, projects: currentStudentProjectsSate};
+        }
+        return student;
+      });
+
+      return {
+        ...state,
+        students: studentsState,
+        currentStudent: {...currentStudentSate, projects: currentStudentProjectsSate}
+      };
+
+    }
+
     case StudentsActionTypes.SetCurrentStudent:
 
       let currentStudent: Student | null;
       if (typeof action.payload.currentStudent === 'string') {
-        // currentStudent = state.students[+action.payload.currentStudent];
-        currentStudent = state.students.find((student: Student) => student.id === +action.payload.currentStudent );
+        currentStudent = state.students.find((student: Student) => student.id === +action.payload.currentStudent);
       } else {
         currentStudent = null;
       }
@@ -103,6 +128,38 @@ export function projectsReducer(state: ProjectsState = initialProjectsState, act
         ...state,
         projects: action.payload.projects,
         error: null
+      };
+
+    case ProjectsActionTypes.CreateProject: {
+
+      const projectsState = [...state.projects];
+      projectsState.sort((a, b) => a < b ? 1 : -1);
+
+      return {
+        ...state,
+        projects: [...state.projects, {...action.payload.project, id: projectsState[0].id + 1}]
+      }
+    }
+
+    case ProjectsActionTypes.DeleteProject: {
+      return {
+        ...state,
+        projects: [...state.projects].filter((project: Project) => project.id !== action.payload.projectId )
+      }
+    }
+
+    case ProjectsActionTypes.SetCurrentProject:
+
+      let currentProject: Project | null;
+      if (typeof action.payload.currentProject === 'string') {
+        currentProject = state.projects.find((project: Project) => project.id === +action.payload.currentProject);
+      } else {
+        currentProject = null;
+      }
+
+      return {
+        ...state,
+        currentProject
       };
 
     case ProjectsActionTypes.LoadProjectsError:
@@ -133,7 +190,7 @@ export const selectCurrentStudent = (state: AppState, projects: Project[]) => {
 
 export const selectAvailableProjects = (state: AppState): Project[] | null => {
 
-  if(state.students.currentStudent && state.students.currentStudent.projects.length){
+  if (state.students.currentStudent && state.students.currentStudent.projects.length) {
     return state.projects.projects.filter(project => !state.students.currentStudent.projects.includes(project.id));
   }
   return state.projects.projects;

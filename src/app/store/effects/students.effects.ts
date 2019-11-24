@@ -1,11 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Actions, Effect, ofType } from '@ngrx/effects';
-import { map, mergeMap, catchError } from 'rxjs/operators';
-import { AppState } from '../reducers';
-import { Store } from '@ngrx/store';
+import {Injectable} from '@angular/core';
+import {Actions, Effect, ofType} from '@ngrx/effects';
+import {catchError, map, mergeMap, withLatestFrom} from 'rxjs/operators';
+import {AppState, selectStudents} from '../reducers';
+import {Action, Store} from '@ngrx/store';
 
-import { of } from 'rxjs';
-import {LoadStudents, LoadStudentsError, LoadStudentsSuccess, StudentsActionTypes} from '../actions/students.actions';
+import {Observable, of} from 'rxjs';
+import {
+  LoadStudents,
+  LoadStudentsError,
+  LoadStudentsSuccess,
+  SaveStudents,
+  SaveStudentsSuccess,
+  StudentsActionTypes
+} from '../actions/students.actions';
 import {LocalStorageService} from '../../core/local-storage.service';
 
 @Injectable()
@@ -28,6 +35,24 @@ export class StudentsEffects {
         ))
     );
 
-  constructor(private actions$: Actions, private store: Store<AppState>, private apiService: LocalStorageService) { }
+  @Effect()
+  saveStudents: Observable<Action> = this.actions$.pipe(
+    ofType<SaveStudents>(StudentsActionTypes.SaveStudents),
+    withLatestFrom(this.store.select(selectStudents)),
+    mergeMap(
+      (action) => this.apiService.saveStudents(action[1])
+        .pipe(
+          map(val => {
+            console.log('triggers success action');
+            return (new SaveStudentsSuccess());
+          }),
+          catchError((errorMessage) => of(new LoadStudentsError({error: errorMessage})))
+        )
+    )
+  );
+
+
+  constructor(private actions$: Actions, private store: Store<AppState>, private apiService: LocalStorageService) {
+  }
 
 }

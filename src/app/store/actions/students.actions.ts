@@ -5,6 +5,8 @@ import {Student} from '../../core/model/student';
 export enum StudentsActionTypes {
   UnEngageProject = '[Students] Unengage Project',
   EngageProject = '[Students] Engage Project',
+  SaveStudents = '[Students] Save Students',
+  SaveStudentsSuccess = '[Students] Save StudentsSuccess',
   LoadStudents = '[Students] Load Students',
   LoadStudentsError = '[Students] Students Load Error',
   LoadStudentsSuccess = '[Students] Students Load Success',
@@ -26,6 +28,22 @@ export class LoadStudents implements Action {
   readonly type = StudentsActionTypes.LoadStudents;
 
   constructor(readonly payload: { students: Student[] | null }) {
+
+  }
+}
+
+export class SaveStudents implements Action {
+  readonly type = StudentsActionTypes.SaveStudents;
+
+  constructor(readonly payload) {
+
+  }
+}
+
+export class SaveStudentsSuccess implements Action {
+  readonly type = StudentsActionTypes.SaveStudentsSuccess;
+
+  constructor() {
 
   }
 }
@@ -62,8 +80,18 @@ export class UnEngageProject implements Action {
   }
 }
 
+export class EngageProject implements Action {
+  readonly type = StudentsActionTypes.EngageProject;
+
+  constructor(readonly payload: { projectId: number }) {
+
+  }
+}
+
 
 export type ActionsUnion = LoadStudents
   | LoadStudentsError
   | UnEngageProject
+  | SaveStudents
+  | EngageProject
   | LoadStudentsSuccess;

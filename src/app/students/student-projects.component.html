@@ -24,7 +24,7 @@
     <div *ngIf="projects">
       <mat-list>
         <mat-list-item *ngFor="let project of projects">
-          <h3 matLine><a [routerLink]="['/students', project.id]">{{project.title}}</a></h3>
+          <h3 matLine><a [routerLink]="['/projects', project.id]">{{project.title}}</a></h3>
           <button mat-icon-button (click)="openUnengageDialog(project.id)">
             <mat-icon>highlight_off</mat-icon>
           </button>

@@ -1,21 +1,28 @@
 <header>
-  <h2 class="section-title ">{{sectionTitle}}</h2>
+  <h2 class="section-title ">{{sectionTitle}}<mat-divider vertical="true" inset="true" [vertical]="true" [inset]="true"></mat-divider></h2>
+  <mat-divider vertical="true" inset="true" [vertical]="true" [inset]="true"></mat-divider>
 
 </header>
-<div *ngIf="projects$ | async as projects">
+<div *ngIf="projectsWithStudent$ | async as projects">
   <mat-list>
     <mat-list-item *ngFor="let project of projects">
-      <h3 matLine><a [routerLink]="['/students', project.id]">{{project.title}}</a></h3>
+      <h3 matLine><a [routerLink]="['/projects', project.id]">#{{project.id}} {{project.title}}</a></h3>
       <p matLine>
-        <span>ID: {{project.id}} </span>
+        {{project.description}}
       </p>
-      <!--<div class="vm-50 align-right">-->
-        <!--{{student.projects.length}} projects in schedule-->
-      <!--</div>-->
-      <a mat-icon-button [routerLink]="['/students', project.id]">
-        <mat-icon>more_vert</mat-icon>
-      </a>
+      <div class="vm-50 align-right description-col">
+        {{project.students.length}} Subscribers
+      </div>
+
+      <button mat-icon-button color="warn"
+              (click)="openDeleteDialog(project.id)"
+              [disabled]="project.students.length ? true : false"  >
+        <mat-icon>delete_forever</mat-icon>
+      </button>
       <mat-divider></mat-divider>
     </mat-list-item>
   </mat-list>
 </div>
+<button mat-button mat-fab color="warn" class="mat-fab-bottom-right" (click)="createProject()" aria-label="Add a category">
+  <mat-icon>add</mat-icon>
+</button>
