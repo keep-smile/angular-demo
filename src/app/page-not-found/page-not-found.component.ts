@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-page-not-found',
@@ -9,9 +11,13 @@ export class PageNotFoundComponent implements OnInit {
 
   sectionTitle = 'No such page. Go home'
 
-  constructor() { }
+  constructor(private location: Location) { }
 
   ngOnInit() {
+  }
+
+  locationBack(){
+    this.location.back();
   }
 
 }

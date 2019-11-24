@@ -1,13 +1,8 @@
 
-- Active navigation item should be visible
 - Component Decomposition -> SectionTitle to Shared Components
-- Loading animation while waiting as first time visitor
-- Colors by Material theme
-- Architecture optimisation / useless core.module
 - Student avatar filename as part of the student
 - CSS?
-- Orgainize Store to one directory
 - Mobile adaptation with the transitioning screens ideally
-- Confirmation Dialog
 - Snack Bar on activity
 - API Errors processing
+- ToolTips

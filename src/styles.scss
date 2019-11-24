@@ -1,17 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.layout{
-  min-height: 94vh;
+html, body {
+  height: 100%;
 }
 
-.cdk-overlay-pane{
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.layout {
+  min-height: 92vh;
+  padding-bottom: 3vh;
+}
+
+app-footer{
+
+}
+
+.cdk-overlay-pane {
   margin-top: 15px;
 }
 
-main{
+main {
   padding: 0em 1.5em;
 
   @media screen and (max-width: 400px) {
@@ -19,7 +31,7 @@ main{
   }
 }
 
-.section-title a{
+.section-title a {
   text-decoration: none;
   font-weight: normal;
   margin-right: 1em;
@@ -29,13 +41,14 @@ main{
   }
 }
 
-.mat-card-title{
+.mat-card-title {
   @media screen and (max-width: 400px) {
     font-size: 18px;
   }
 }
-.section-title{
-  font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+
+.section-title {
+  font-family: Roboto, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: bold;
   margin: 0;
   padding: 28px 0px 10px;
@@ -45,10 +58,12 @@ main{
     font-size: 16px;
   }
 }
-.section-title.bold{
+
+.section-title.bold {
   font-weight: bold;
 }
-.mat-card-content .mat-list-base .mat-list-item .mat-list-item-content{
+
+.mat-card-content .mat-list-base .mat-list-item .mat-list-item-content {
   margin: 0 -16px !important;
 }
 

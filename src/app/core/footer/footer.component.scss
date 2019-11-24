@@ -1,11 +1,16 @@
 footer{
 
-  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: stretch;
+
   height: 5vh;
   min-height: 30px;
   background-color: #311B92;
 
-  span{
+  div{
     font-size: 1em;
     color: white;
     margin-left: 2em;

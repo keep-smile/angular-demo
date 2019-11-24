@@ -1,2 +1,9 @@
-<h2><a [routerLink]="['/students']"> < Home</a> | {{sectionTitle}}</h2>
+<header>
+  <h2 class="section-title bold">
+    <a mat-button (click)="locationBack()">
+      <mat-icon>arrow_back_ios</mat-icon>
+      Back</a> | {{sectionTitle}}
+  </h2>
+  <mat-divider></mat-divider>
+</header>
 <div class="huge404">404</div>
