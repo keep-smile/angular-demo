@@ -1,7 +1,5 @@
 <header>
-  <h2 class="section-title ">{{sectionTitle}}<mat-divider vertical="true" inset="true" [vertical]="true" [inset]="true"></mat-divider></h2>
-  <mat-divider vertical="true" inset="true" [vertical]="true" [inset]="true"></mat-divider>
-
+  <h2 class="section-title " style="display: flex"><span style="flex-grow: 1; align-self: center;">{{sectionTitle}}</span><app-excel-download></app-excel-download></h2>
 </header>
 <div *ngIf="projectsWithStudent$ | async as projects">
   <mat-list>

@@ -189,6 +189,15 @@ export const selectStudents = (state: AppState) => {
   return state.students.students;
 };
 
+export const selectStudentsFlatten = (state: AppState) => {
+  return state.students.students.map(student => {
+    return {...student, projects: student.projects.map(prId => {
+      const projectToName = state.projects.projects.find(pr => pr.id === prId );
+      return projectToName.title;
+      }).join(', ')}
+  });
+};
+
 export const selectCurrentStudent = (state: AppState, projects: Project[]) => {
   return state.students.currentStudent;
 };

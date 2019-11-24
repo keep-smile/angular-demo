@@ -74,7 +74,7 @@ export class ProjectsListComponent implements OnInit {
   openDeleteDialog(projectId: number): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
-      data: 'Do you confirm delete of this project?'
+      data: 'Do you confirm deletion of this project?'
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

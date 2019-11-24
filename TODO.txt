@@ -1,5 +1,5 @@
 
 - Component Decomposition -> SectionTitle to Shared Components
 - Student avatar filename as part of the student
-- API Errors processing
+- API Errors processing/handling
 - ToolTips

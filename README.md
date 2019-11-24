@@ -24,11 +24,14 @@ Application uses NgRx driven data storage mechanism
 
 Implements simple CD to the GitHub Pages ( https://keep-smile.github.io ) repository 
 
+Data download as XLSX file
 
 #### Known issues
 
 - Not refactored - code duplication
 - Poor Mat Design implementation
+- Poor Mobile adaptation
+- Poor CSS usage and structure
 
 
 ### Run details

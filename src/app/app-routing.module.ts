@@ -10,7 +10,7 @@ const appRoutes: Routes = [
 
   {
     path: 'students/:id', component: StudentDetailComponent,
-    resolve: {resolvedData: DataResolver}
+    resolve: {dataResolvedFlag: DataResolver}
   },
   {
     path: 'students', component: StudentsListComponent,
@@ -31,9 +31,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, { useHash: true }),
 
   ],
-  providers: [
-    DataResolver
-  ],
+  providers: [DataResolver],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

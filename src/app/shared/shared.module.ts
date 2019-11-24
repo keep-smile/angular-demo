@@ -15,16 +15,17 @@ import {
   MatSnackBarModule
 } from '@angular/material';
 import {AddProjectDialogComponent} from './add-project-dialog/add-project-dialog.component';
-import {MatFormFieldModule} from '@angular/material/typings/esm5/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
+import {ExcelDownloadComponent} from './excel-download/excel-download.component';
 
 
 @NgModule({
-  declarations: [SnackbarComponent, ConfirmationDialogComponent, AddProjectDialogComponent],
+  declarations: [SnackbarComponent, ConfirmationDialogComponent, AddProjectDialogComponent, ExcelDownloadComponent],
   exports: [
     SnackbarComponent,
     ConfirmationDialogComponent,
     AddProjectDialogComponent,
+    ExcelDownloadComponent,
     MatSnackBarModule,
     MatButtonModule,
     MatCardModule,

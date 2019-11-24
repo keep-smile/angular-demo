@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import {ToolbarComponent} from './toolbar/toolbar.component';
 import {RouterModule} from '@angular/router';
 import {
-  MatButtonModule,
-  MatDividerModule, MatIconModule,
-  MatListModule,
   MatProgressSpinnerModule,
   MatToolbarModule
 } from '@angular/material';

@@ -1,5 +1,5 @@
 <header>
-  <h2 class="section-title ">{{sectionTitle}}</h2>
+  <h2 class="section-title " style="display: flex"><span style="flex-grow: 1; align-self: center;">{{sectionTitle}}</span><app-excel-download></app-excel-download></h2>
 
 </header>
 <div *ngIf="students$ | async as students">
