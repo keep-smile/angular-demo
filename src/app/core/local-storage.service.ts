@@ -43,6 +43,27 @@ export class LocalStorageService {
     return null;
   }
 
+  engageUserProgect(projectId) {
+  }
+
+  saveStudents(students: Student[]) {
+    return new Observable(observer => {
+      setTimeout(() => {
+        console.log('students saved',students );
+        this.set('students', students);
+      }, 800)
+    })
+  }
+
+  saveProjects(projects: Project[]) {
+    return new Observable(observer => {
+      setTimeout(() => {
+        console.log('projects saved', projects);
+        this.set('projects', projects);
+      }, 800)
+    })
+  }
+
   getAllProjects(): Observable<Project[]> | null {
     return new Observable(observer => {
       setTimeout(() => {
@@ -83,34 +104,29 @@ const initialStudents = [
   {
     id: 1, name: 'Brian Robert',
     projects: [
-      {id: 1, title: 'Chemical Research'},
-      {id: 2, title: 'Medical Internature'}
+      1, 2
     ]
   },
   {
     id: 2, name: 'Joan Justin', projects: [
-      {id: 1, title: 'Chemical Research'},
-      {id: 3, title: 'Math Research'},
-      {id: 4, title: 'Soccer Tournaments'}
+      1, 3, 4
     ]
   },
   {
     id: 3, name: 'Andre Peterson', projects: [
-      {id: 1, title: 'Chemical Research'},
-      {id: 4, title: 'Soccer Tournaments'}
+      1, 4
     ]
   },
   {
     id: 4, name: 'Luisa Darlington', projects: [
-      {id: 3, title: 'Math Research'},
-      {id: 2, title: 'Medical Internature'},
+      1, 3
     ]
   },
 ];
 
 const initialProjects = [
-  {id: 1, title: 'Chemical Research'},
-  {id: 2, title: 'Medical Internature'},
-  {id: 3, title: 'Math Research'},
-  {id: 4, title: 'Soccer Tournaments'},
+  {id: 1, title: 'Chemical Research', description: 'Simple chemical research'},
+  {id: 2, title: 'Medical Internature', description: 'Simple medical assistance'},
+  {id: 3, title: 'Math Research', description: 'Simple math research'},
+  {id: 4, title: 'Soccer Tournaments', description: 'For those who like sport'},
 ];
