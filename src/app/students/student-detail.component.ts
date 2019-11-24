@@ -33,7 +33,7 @@ export class StudentDetailComponent implements OnInit {
 
     this.breakpoint = (window.innerWidth <= 450) ? 1 : 5;
 
-    this.currentStudentId = this.route.snapshot.params['id'];
+    this.currentStudentId = this.route.snapshot.params.id;
 
     // Just for Demo purposes
     this.currentStudent$ = this.store.pipe(select((state: AppState) => {

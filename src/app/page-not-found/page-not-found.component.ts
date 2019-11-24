@@ -9,14 +9,14 @@ import { Location } from '@angular/common';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  sectionTitle = 'No such page. Go home'
+  sectionTitle = 'No such page. Go home';
 
   constructor(private location: Location) { }
 
   ngOnInit() {
   }
 
-  locationBack(){
+  locationBack() {
     this.location.back();
   }
 

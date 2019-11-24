@@ -25,7 +25,7 @@ export class ProjectsEffects {
       mergeMap((action) => this.apiService.getAllProjects()
         .pipe(
           map(projects => {
-            return (new LoadProjectsSuccess({projects: projects}));
+            return (new LoadProjectsSuccess({projects}));
           }),
           catchError((errorMessage) => of(new LoadProjectsError({error: errorMessage})))
         ))

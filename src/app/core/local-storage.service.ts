@@ -35,7 +35,7 @@ export class LocalStorageService {
           );
         }
 
-      }, 1000)
+      }, 1000);
     });
   }
 
@@ -49,10 +49,10 @@ export class LocalStorageService {
   saveStudents(students: Student[]) {
     return new Observable(observer => {
       setTimeout(() => {
-        console.log('students saved',students );
+        console.log('students saved', students );
         this.set('students', students);
-      }, 800)
-    })
+      }, 800);
+    });
   }
 
   saveProjects(projects: Project[]) {
@@ -60,8 +60,8 @@ export class LocalStorageService {
       setTimeout(() => {
         console.log('projects saved', projects);
         this.set('projects', projects);
-      }, 800)
-    })
+      }, 800);
+    });
   }
 
   getAllProjects(): Observable<Project[]> | null {
@@ -69,15 +69,14 @@ export class LocalStorageService {
       setTimeout(() => {
         if (!this.get('failedRequest')) {
           // this.set('failedRequest', true);
-          alert(1)
           return throwError('Ok, it happens. Let\'s try again');
         } else {
           observer.next(
             this.get('projects')
           );
         }
-      }, 2000)
-    })
+      }, 2000);
+    });
   }
 
   private set(key: string, data: any): void {

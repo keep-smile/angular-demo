@@ -55,12 +55,12 @@ export class StudentProjectsComponent implements OnInit {
   doProjectEngagement(projectId: number | null) {
 
     if (!projectId) {
-      this.engagementError = true
+      this.engagementError = true;
     } else {
       this.engagementError = false;
       this.projectSelected = null;
 
-      this.store.dispatch(new EngageProject({projectId: projectId}));
+      this.store.dispatch(new EngageProject({projectId}));
 
       this.showSnackBar('You have engaged to the project', 'Engaged');
 
@@ -75,15 +75,15 @@ export class StudentProjectsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.store.dispatch(new UnEngageProject({projectId: projectId}));
+        this.store.dispatch(new UnEngageProject({projectId}));
 
-        this.showSnackBar('You have unengaged from the project', 'Unengaged')
+        this.showSnackBar('You have unengaged from the project', 'Unengaged');
         this.store.dispatch(new SaveStudents({}));
       }
     });
   }
 
-  showSnackBar(message: string, action: string){
+  showSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 3000,
     });

@@ -25,7 +25,7 @@ export class StudentsEffects {
       mergeMap((action) => this.apiService.getAllStudents()
         .pipe(
           map(students => {
-            return (new LoadStudentsSuccess({students: students}));
+            return (new LoadStudentsSuccess({students}));
           }),
           catchError((errorMessage) => {
             console.log('error triggered', errorMessage);

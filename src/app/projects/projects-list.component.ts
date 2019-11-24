@@ -38,7 +38,7 @@ export class ProjectsListComponent implements OnInit {
 
       return store.projects.projects.map((project): ProjectWithStudents => {
 
-        const projectStudents = store.students.students.filter( student => student.projects.indexOf(project.id) >= 0 )
+        const projectStudents = store.students.students.filter( student => student.projects.indexOf(project.id) >= 0 );
 
         return {...project, students: projectStudents};
       });
@@ -64,12 +64,12 @@ export class ProjectsListComponent implements OnInit {
         }));
 
         this.store.dispatch(new SaveProjects());
-        this.showSnackBar('You have created new Project', 'New Project')
+        this.showSnackBar('You have created new Project', 'New Project');
       }
     });
   }
 
-  showSnackBar(message: string, action: string){
+  showSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 3000,
     });
@@ -82,14 +82,14 @@ export class ProjectsListComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.store.dispatch(new DeleteProject({projectId: projectId}));
+        this.store.dispatch(new DeleteProject({projectId}));
 
         console.log('Save products dispatch after dialog close');
 
 
         this.store.dispatch(new SaveProjects());
 
-        this.showSnackBar('You have deleted the project', 'Deleted')
+        this.showSnackBar('You have deleted the project', 'Deleted');
 
       }
     });

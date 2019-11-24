@@ -5,6 +5,6 @@ export class Project {
   title: string;
   description: string;
 }
-export class ProjectWithStudents extends Project{
+export class ProjectWithStudents extends Project {
   students: Student[] | [];
 }

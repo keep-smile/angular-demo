@@ -56,6 +56,6 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   locationBack() {
-    this.location.back()
-  };
+    this.location.back();
+  }
 }
