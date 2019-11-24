@@ -2,14 +2,6 @@
   margin: 2em;
 }
 
-.align-right{
-  text-align: right;
-  padding-right: 1em;
-}
-.vm-50 {
-  max-width: 50vm;
-  width: 100%;
-}
 .percent-20 {
   width: 20%;
 }

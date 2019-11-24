@@ -17,9 +17,10 @@ export class StudentsAction implements Action {
   type: string;
   payload: {
     students: Student[] | null,
-    error: string | null
-    projectId: number | null
-    currentStudent: Student | null
+    error: string | null,
+    projectId: number | null,
+    studentId: number | null,
+    currentStudent: Student | null,
 
   };
 }
@@ -75,7 +76,7 @@ export class LoadStudentsError implements Action {
 export class UnEngageProject implements Action {
   readonly type = StudentsActionTypes.UnEngageProject;
 
-  constructor(readonly payload: { projectId: number }) {
+  constructor(readonly payload: { projectId: number, studentId: number | null }) {
 
   }
 }

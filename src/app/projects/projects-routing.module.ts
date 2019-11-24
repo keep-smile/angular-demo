@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ProjectsListComponent} from './projects-list.component';
-import {DataResolver} from '../data-resolver.service';
 import {ProjectDetailsComponent} from './project-details.component';
+import {DataResolver} from '../data-resolver.service';
 
 const routes: Routes = [
   {
@@ -17,6 +17,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class ProjectsRoutingModule {}

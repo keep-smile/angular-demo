@@ -5,9 +5,10 @@ import {ProjectsService} from './projects.service';
 import {ProjectsRoutingModule} from './projects-routing.module';
 import {SharedModule} from '../shared/shared.module';
 import { ProjectDetailsComponent } from './project-details.component';
+import { ProjectStudentsComponent } from './project-students.component';
 
 @NgModule({
-  declarations: [ProjectsListComponent, ProjectDetailsComponent],
+  declarations: [ProjectsListComponent, ProjectDetailsComponent, ProjectStudentsComponent],
   imports: [
     CommonModule,
     SharedModule,

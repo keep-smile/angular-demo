@@ -8,10 +8,6 @@ import {Project, ProjectWithStudents} from '../core/model/project';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {AddProjectDialogComponent} from '../shared/add-project-dialog/add-project-dialog.component';
 import {ConfirmationDialogComponent} from '../shared/confirmation-dialog/confirmation-dialog.component';
-import {SaveStudents, UnEngageProject} from '../store/actions/students.actions';
-// import {MatDialog} from '@angular/material';
-// import {AddProjectDialogComponent} from './add-project-dialog/add-project-dialog.component';
-
 
 @Component({
   selector: 'app-projects-list',

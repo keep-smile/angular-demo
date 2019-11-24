@@ -4,7 +4,7 @@
 - Material Design library
 - NGRX as Storage management mechanism
 - GitHub as hosting with deployment process
-- Project architecture build by Angular CLI
+- Project architecture by Angular CLI
 - Emulated asynchronous remote backend API
 
 
@@ -22,14 +22,12 @@ All data changes stored in the Local Storage which emulates backend API storage.
 
 Application uses NgRx driven data storage mechanism 
 
-Implements simple CI to the GitHub Pages ( https://keep-smile.github.io ) repository 
+Implements simple CD to the GitHub Pages ( https://keep-smile.github.io ) repository 
 
 
 #### Known issues
 
-- Not mobile adapted
-- Not refactored - code duplication  
-- Not optimized Modules imports
+- Not refactored - code duplication
 - Poor Mat Design implementation
 
 

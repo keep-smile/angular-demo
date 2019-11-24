@@ -1,0 +1,15 @@
+<mat-list>
+  <mat-list-item *ngFor="let student of currentProject.students">
+    <img matListAvatar src="/assets/students/student{{student.id}}.jpeg" alt="{{student.name}} icon">
+    <h3 matLine><a [routerLink]="['/students', student.id]">{{student.name}}</a></h3>
+    <p matLine>
+      <span>ID: {{student.id}} </span>
+    </p>
+    <div class="vm-50 align-right">
+      {{student.projects.length}} projects <span class="sm-hidden"> scheduled</span>
+    </div>
+    <button mat-icon-button color="warn" (click)="openStudentDeleteDialog(student.id)">
+      <mat-icon>highlight_off</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>

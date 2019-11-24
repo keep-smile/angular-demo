@@ -25,16 +25,19 @@ export class LocalStorageService {
 
     return new Observable(observer => {
       setTimeout(() => {
-        if (!this.get('failedRequest')) {
-          this.set('failedRequest', true);
-          observer.next(throwError('oops!'));
-          // throw Observable.throw('Ok, it happens. Let\'s try again')
-        } else {
-          observer.next(
-            this.get('students')
-          );
-        }
+        // if (!this.get('failedRequest')) {
+        //   this.set('failedRequest', true);
+        //   observer.next(throwError('oops!'));
+        //   // throw Observable.throw('Ok, it happens. Let\'s try again')
+        // } else {
+        //   observer.next(
+        //     this.get('students')
+        //   );
+        // }
 
+        observer.next(
+          this.get('students')
+        );
       }, 1000);
     });
   }
@@ -67,15 +70,20 @@ export class LocalStorageService {
   getAllProjects(): Observable<Project[]> | null {
     return new Observable(observer => {
       setTimeout(() => {
-        if (!this.get('failedRequest')) {
-          // this.set('failedRequest', true);
-          return throwError('Ok, it happens. Let\'s try again');
-        } else {
-          observer.next(
-            this.get('projects')
-          );
-        }
-      }, 2000);
+        // if (!this.get('failedRequest')) {
+        //   // this.set('failedRequest', true);
+        //   return throwError('Ok, it happens. Let\'s try again');
+        // } else {
+        //   observer.next(
+        //     this.get('projects')
+        //   );
+        // }
+
+        observer.next(
+          this.get('projects')
+        );
+
+      }, 800);
     });
   }
 

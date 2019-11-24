@@ -75,7 +75,7 @@ export class StudentProjectsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.store.dispatch(new UnEngageProject({projectId}));
+        this.store.dispatch(new UnEngageProject({projectId, studentId: null}));
 
         this.showSnackBar('You have unengaged from the project', 'Unengaged');
         this.store.dispatch(new SaveStudents({}));

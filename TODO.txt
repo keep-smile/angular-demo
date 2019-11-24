@@ -1,8 +1,5 @@
 
 - Component Decomposition -> SectionTitle to Shared Components
 - Student avatar filename as part of the student
-- CSS?
-- Mobile adaptation with the transitioning screens ideally
-- Snack Bar on activity
 - API Errors processing
 - ToolTips

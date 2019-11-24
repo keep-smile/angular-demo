@@ -12,14 +12,15 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
-  declarations: [StudentsListComponent, StudentDetailComponent, StudentProjectsComponent],
+  declarations: [StudentsListComponent, StudentProjectsComponent, StudentDetailComponent],
   imports: [
     OverlayModule,
     SharedModule,
     CommonModule,
     MatSelectModule,
     RouterModule,
-  ]
+  ],
+  entryComponents:[StudentDetailComponent]
 })
 export class StudentsModule {
 }

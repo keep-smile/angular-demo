@@ -42,9 +42,6 @@ export class ProjectDetailsComponent implements OnInit {
           student => student.projects.indexOf(currentProject.id) >= 0
         );
 
-        console.log('Project students', projectStudents);
-
-
         return {...currentProject, students: projectStudents};
 
       } else {
