@@ -22,7 +22,7 @@ export class ProjectsEffects {
   loadProjects$ = this.actions$
     .pipe(
       ofType<LoadProjects>(ProjectsActionTypes.LoadProjects),
-      mergeMap((action) => this.apiService.getAllProjects()
+      mergeMap((action) => this.apiService.getProjects()
         .pipe(
           map(projects => {
             return (new LoadProjectsSuccess({projects}));

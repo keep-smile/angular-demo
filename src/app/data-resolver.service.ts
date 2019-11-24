@@ -1,15 +1,11 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 
-import {Observable, of} from 'rxjs';
-
-
-import {Student} from './core/model/student';
-import {Action, select, Store} from '@ngrx/store';
-import {AppState, selectStudents} from './store/reducers';
-import {LoadStudents, StudentsActionTypes} from './store/actions/students.actions';
-import {LoadProjects, ProjectsActionTypes} from './store/actions/projects.actions';
-import {Actions} from '@ngrx/effects';
+import {Observable} from 'rxjs';
+import {select, Store} from '@ngrx/store';
+import {AppState} from './store/reducers';
+import {LoadStudents} from './store/actions/students.actions';
+import {LoadProjects} from './store/actions/projects.actions';
 import {filter, first, tap} from 'rxjs/operators';
 
 @Injectable({
@@ -25,7 +21,8 @@ export class DataResolver implements Resolve<boolean> {
 
     return this.store.pipe(
       select((store: AppState): boolean => {
-        return (store.projects.projects && store.students.students) ? true : false;
+        return (store.projects.projects && store.projects.projects.length
+          && store.students.students && store.students.students.length) ? true : false;
       }),
       tap(loaded => {
         if (!loaded) {
@@ -36,8 +33,6 @@ export class DataResolver implements Resolve<boolean> {
       filter(loaded => loaded),
       first()
     );
-
-    // return of(true);
   }
 
 }

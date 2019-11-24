@@ -2,16 +2,18 @@
   margin-right: 3em;
 
   @media screen and (max-width: 400px) {
-    margin-right: 1em;
+    margin-right: 0.5em;
     font-size: 17px;
   }
 }
-
 
 .item,
 a {
   vertical-align: middle;
   margin-right: 2em;
+  @media screen and (max-width: 400px) {
+    margin-right: 0.5em;
+  }
 }
 
 .router-link-active {

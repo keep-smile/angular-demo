@@ -22,7 +22,7 @@ export class StudentsEffects {
   loadStudents$ = this.actions$
     .pipe(
       ofType<LoadStudents>(StudentsActionTypes.LoadStudents),
-      mergeMap((action) => this.apiService.getAllStudents()
+      mergeMap((action) => this.apiService.getStudents()
         .pipe(
           map(students => {
             return (new LoadStudentsSuccess({students}));

@@ -21,7 +21,7 @@ export class LocalStorageService {
   }
 
 
-  getAllStudents(): Observable<Student[] | any> {
+  getStudents(): Observable<Student[] | any> {
 
     return new Observable(observer => {
       setTimeout(() => {
@@ -42,13 +42,6 @@ export class LocalStorageService {
     });
   }
 
-  getStudent(id: number): Student | null {
-    return null;
-  }
-
-  engageUserProgect(projectId) {
-  }
-
   saveStudents(students: Student[]) {
     return new Observable(observer => {
       setTimeout(() => {
@@ -67,7 +60,7 @@ export class LocalStorageService {
     });
   }
 
-  getAllProjects(): Observable<Project[]> | null {
+  getProjects(): Observable<Project[]> | null {
     return new Observable(observer => {
       setTimeout(() => {
         // if (!this.get('failedRequest')) {

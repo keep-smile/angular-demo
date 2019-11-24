@@ -33,6 +33,7 @@ Data download as XLSX file
 - Poor Mat Design implementation
 - Poor Mobile adaptation
 - Poor CSS usage and structure
+- Ugly Git commit history
 - Tests is in the progress - just couple e2e checks on this moment 
 
 ### Run details
