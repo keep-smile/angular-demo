@@ -7,7 +7,6 @@
 - Project architecture by Angular CLI
 - Emulated asynchronous remote backend API
 
-
 ## Project details
 
 Demo Application hosted on the GitHub page: https://keep-smile.github.io
@@ -26,13 +25,15 @@ Implements simple CD to the GitHub Pages ( https://keep-smile.github.io ) reposi
 
 Data download as XLSX file
 
+(e2e and unit tests)
+
 #### Known issues
 
 - Not refactored - code duplication
 - Poor Mat Design implementation
 - Poor Mobile adaptation
 - Poor CSS usage and structure
-
+- Tests is in the progress - just couple e2e checks on this moment 
 
 ### Run details
 
@@ -40,8 +41,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
 Run `ng build` to build the project.
 
-Run `ng test` to run Karma test routine.
+Run `npm run deploy` to build project in prod mode and push to the GitHub pages service repository ( will not work without permissions )
 
-Run `npm run deploy` to build project in prod mode and push to the GitHub pages service repository ( will not work without permissions ) 
+Run `ng test` to run Karma test routine. 
 
 Run `ng e2e` to execute the end-to-end tests.
