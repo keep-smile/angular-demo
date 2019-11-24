@@ -9,6 +9,7 @@ import {
 import {LocalStorageService} from './local-storage.service';
 import { FooterComponent } from './footer/footer.component';
 import {SharedModule} from '../shared/shared.module';
+import {StudentsModule} from '../students/students.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {SharedModule} from '../shared/shared.module';
     MatProgressSpinnerModule,
     CommonModule,
     MatToolbarModule,
+    StudentsModule,
     RouterModule,
   ],
 

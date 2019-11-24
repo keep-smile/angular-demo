@@ -1,16 +1,18 @@
-import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import {AppPage} from './app.po';
+import {browser, logging} from 'protractor';
 
-describe('workspace-project App', () => {
+describe('App', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
+    page.navigateTo('#/projects');
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('angular-test app is running!');
+  describe('Projects Page', () => {
+    it('should display correct title', () => {
+      expect(page.getTitleText()).toEqual('Projects');
+    });
   });
 
   afterEach(async () => {
@@ -20,4 +22,6 @@ describe('workspace-project App', () => {
       level: logging.Level.SEVERE,
     } as logging.Entry));
   });
+
 });
+

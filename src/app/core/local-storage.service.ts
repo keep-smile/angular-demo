@@ -111,7 +111,7 @@ const initialStudents = [
   {
     id: 1, name: 'Brian Robert',
     projects: [
-      1, 2
+      1, 5
     ]
   },
   {
@@ -126,14 +126,15 @@ const initialStudents = [
   },
   {
     id: 4, name: 'Luisa Darlington', projects: [
-      1, 3
+      5, 3
     ]
   },
 ];
 
 const initialProjects = [
   {id: 1, title: 'Chemical Research', description: 'Simple chemical research'},
-  {id: 2, title: 'Medical Internature', description: 'Simple medical assistance'},
-  {id: 3, title: 'Math Research', description: 'Simple math research'},
-  {id: 4, title: 'Soccer Tournaments', description: 'For those who like sport'},
+  {id: 2, title: 'Summer Camp', description: 'Outdoor activity'},
+  {id: 3, title: 'Medical Internature', description: 'Simple medical assistance'},
+  {id: 4, title: 'Math Research', description: 'Simple math research'},
+  {id: 5, title: 'Soccer Tournaments', description: 'For those who like sport'},
 ];
