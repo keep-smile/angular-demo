@@ -23,6 +23,7 @@ const appRoutes: Routes = [
       import('./projects/projects.module').then(m => m.ProjectsModule)
   },
   {path: '', redirectTo: 'students', pathMatch: 'full'},
+  {path: '404', component: PageNotFoundComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

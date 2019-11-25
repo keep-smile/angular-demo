@@ -2,11 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Student} from '../core/model/student';
 import {select, Store} from '@ngrx/store';
-import {AppState, selectStudents} from '../store/reducers';
-import {LoadStudents, SetCurrentStudent} from '../store/actions/students.actions';
-import {LoadProjects} from '../store/actions/projects.actions';
+import {AppState, selectIfStudentNotFound, selectStudentProjects} from '../store/reducers';
+import {SetCurrentStudent} from '../store/actions/students.actions';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Project} from '../core/model/project';
+
 
 @Component({
   selector: 'app-student-detail',
@@ -16,10 +15,9 @@ import {Project} from '../core/model/project';
 export class StudentDetailComponent implements OnInit {
 
   currentStudent$ = new Observable<Student | null | number>();
+  badStudentId$ = new Observable<boolean>();
   currentStudentId: number;
   sectionTitle = ' > Engagement in details';
-  breakpoint = 5;
-
 
   constructor(
     private store: Store<AppState>,
@@ -28,43 +26,26 @@ export class StudentDetailComponent implements OnInit {
   ) {
   }
 
-
   ngOnInit() {
-
-    this.breakpoint = (window.innerWidth <= 450) ? 1 : 5;
 
     this.currentStudentId = this.route.snapshot.params.id;
 
     // Just for Demo purposes
-    this.currentStudent$ = this.store.pipe(select((state: AppState) => {
+    this.currentStudent$ = this.store.pipe(select(selectStudentProjects));
+    this.badStudentId$ = this.store.select(selectIfStudentNotFound, {currentStudentId: this.currentStudentId});
 
-      if (state.students.currentStudent && state.projects.projects && state.projects.projects.length) {
 
-        const currentStudent =  state.students.currentStudent;
+    this.badStudentId$.subscribe(badStudentId => {
+      console.log('badStudentId before redirect', badStudentId);
 
-        const projectsDetailed = [] as Project[];
-
-        const projectsList = state.projects.projects;
-
-        currentStudent.projects.forEach((projectId, index, projects) => {
-
-          const project = projectsList.find(project => project.id === projectId);
-          projectsDetailed.push(project);
-
-        });
-
-        return {...currentStudent, projects: projectsDetailed };
-
-      } else {
-        return null;
+      if (badStudentId) {
+        this.router.navigate(['/404']);
+        return false;
       }
-    }));
+      return true;
+    });
 
     this.store.dispatch(new SetCurrentStudent({currentStudent: this.currentStudentId}));
   }
 
-  onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 450) ? 1 : 5;
-
-  }
 }

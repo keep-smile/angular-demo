@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
-import {AppState} from '../store/reducers';
+import {AppState, selectIfProjectNotFound, selectProjectUsers} from '../store/reducers';
 import {SetCurrentProject} from '../store/actions/projects.actions';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProjectWithStudents} from '../core/model/project';
@@ -15,6 +15,7 @@ import {ProjectWithStudents} from '../core/model/project';
 export class ProjectDetailsComponent implements OnInit {
 
   currentProject$ = new Observable<ProjectWithStudents>();
+  badProjectId$ = new Observable<boolean>();
   currentProjectId: number;
   sectionTitle = ' > Project in details';
 
@@ -26,28 +27,24 @@ export class ProjectDetailsComponent implements OnInit {
   ) {
   }
 
-
   ngOnInit() {
 
     this.currentProjectId = this.route.snapshot.params['id'];
 
-    // Just for Demo purposes
-    this.currentProject$ = this.store.pipe(select((state: AppState) => {
+    this.currentProject$ = this.store.pipe(select(selectProjectUsers));
 
-      if (state.projects.currentProject && state.projects.projects && state.projects.projects.length) {
 
-        const currentProject = state.projects.currentProject;
 
-        const projectStudents = state.students.students.filter(
-          student => student.projects.indexOf(currentProject.id) >= 0
-        );
+    this.badProjectId$ = this.store.select(selectIfProjectNotFound, {currentProjectId: this.currentProjectId});
 
-        return {...currentProject, students: projectStudents};
-
-      } else {
-        return null;
+    this.badProjectId$.subscribe(badProjectId => {
+      if (badProjectId) {
+        this.router.navigate(['/404']);
+        return false;
       }
-    }));
+      return true;
+    });
+
 
     this.store.dispatch(new SetCurrentProject({currentProject: this.currentProjectId}));
   }

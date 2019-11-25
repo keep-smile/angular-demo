@@ -1,4 +1,4 @@
-import {ActionReducerMap, MetaReducer} from '@ngrx/store';
+import {ActionReducerMap, MetaReducer, select} from '@ngrx/store';
 import {environment} from '../../../environments/environment';
 
 
@@ -211,6 +211,65 @@ export const selectAvailableProjects = (state: AppState): Project[] | null => {
 };
 
 export const selectProjects = (state: AppState) => state.projects.projects;
+export const selectIfStudentNotFound = (state: AppState, args: { currentStudentId: number}) => {
+  if (state.students.students && state.students.students.length) {
+    const badStudentFlag = !state.students.students.find(student => student.id === +args.currentStudentId);
+    return badStudentFlag;
+  } else {
+    return false;
+  }
+}
+
+export const selectIfProjectNotFound = (state: AppState, args: { currentProjectId: number}) => {
+  if (state.projects.projects && state.projects.projects.length) {
+
+    const badProjectFlag = !state.projects.projects.find(student => student.id === +args.currentProjectId);
+    return badProjectFlag;
+  } else {
+    return false;
+  }
+}
+
+export const selectProjectUsers = (state: AppState) => {
+
+  if (state.projects.currentProject && state.projects.projects && state.projects.projects.length) {
+
+    const currentProject = state.projects.currentProject;
+
+    const projectStudents = state.students.students.filter(
+      student => student.projects.indexOf(currentProject.id) >= 0
+    );
+
+    return {...currentProject, students: projectStudents};
+
+  } else {
+    return null;
+  }
+}
+
+export const selectStudentProjects = (state: AppState) => {
+
+  if (state.students.currentStudent && state.projects.projects && state.projects.projects.length) {
+
+    const currentStudent = state.students.currentStudent;
+
+    const projectsDetailed = [] as Project[];
+
+    const projectsList = state.projects.projects;
+
+    currentStudent.projects.forEach((projectId, index, projects) => {
+
+      const project = projectsList.find(project => project.id === projectId);
+      projectsDetailed.push(project);
+
+    });
+
+    return {...currentStudent, projects: projectsDetailed};
+
+  } else {
+    return null;
+  }
+};
 
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [] : [];
