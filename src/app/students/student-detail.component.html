@@ -1,10 +1,9 @@
 <div *ngIf="currentStudent$ | async as student">
-  <header>
-    <h2 class="section-title bold"><a mat-button [routerLink]="['/students']">
-      <mat-icon>arrow_back_ios</mat-icon>
-      Back</a> {{student.name}} {{sectionTitle}}</h2>
-    <mat-divider></mat-divider>
-  </header>
+  <app-header [showBack]="true"
+              [showDivider]="true"
+              [backHome]="false"
+              [headerTitle] = "student.name + ' '+ sectionTitle"
+  ></app-header>
   <div class="flex-box">
     <mat-card class="flex-child">
       <mat-card-title-group>

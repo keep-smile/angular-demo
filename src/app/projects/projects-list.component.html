@@ -1,6 +1,10 @@
-<header>
-  <h2 class="section-title " style="display: flex"><span style="flex-grow: 1; align-self: center;">{{sectionTitle}}</span><app-excel-download></app-excel-download></h2>
-</header>
+<app-header
+[showBack]="false"
+[showDivider]="false"
+[headerTitle]="sectionTitle"
+>
+    <app-excel-download></app-excel-download>
+</app-header>
 <div *ngIf="projectsWithStudent$ | async as projects">
   <mat-list>
     <mat-list-item *ngFor="let project of projects">
@@ -14,7 +18,10 @@
 
       <button mat-icon-button color="warn"
               (click)="openDeleteDialog(project.id)"
-              [disabled]="project.students.length ? true : false"  >
+              [disabled]="project.students.length ? true : false"
+              matTooltip="Project will be deleted permanently!"
+
+      >
         <mat-icon>delete_forever</mat-icon>
       </button>
       <mat-divider></mat-divider>

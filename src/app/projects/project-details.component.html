@@ -1,12 +1,9 @@
 <div *ngIf="currentProject$ | async as project">
-  <header>
-    <h2 class="section-title bold">
-      <a mat-button (click)="locationBack()">
-      <mat-icon>arrow_back_ios</mat-icon>
-      Back</a> {{project.title}} {{sectionTitle}}
-    </h2>
-    <mat-divider></mat-divider>
-  </header>
+    <app-header [showBack]="true"
+                [showDivider]="true"
+                [backHome]="false"
+                [headerTitle] = "project.title + ' '+ sectionTitle"
+    ></app-header>
     <mat-card>
       <mat-card-title-group>
         <mat-card-title>#{{project.id}} {{project.title}}</mat-card-title>

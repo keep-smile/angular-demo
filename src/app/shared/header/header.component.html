@@ -1,0 +1,6 @@
+<header>
+  <h2 class="section-title bold" style="display: flex"><a *ngIf="showBack" mat-button (click)="onBack()">
+    <mat-icon>arrow_back_ios</mat-icon>
+    Back</a><span style="flex-grow: 1; align-self: center;">{{headerTitle}}</span><ng-content></ng-content></h2>
+  <mat-divider *ngIf="showDivider"></mat-divider>
+</header>

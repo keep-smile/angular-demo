@@ -17,16 +17,18 @@ import {
 import {AddProjectDialogComponent} from './add-project-dialog/add-project-dialog.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ExcelDownloadComponent} from './excel-download/excel-download.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
-  declarations: [SnackbarComponent, ConfirmationDialogComponent, AddProjectDialogComponent, ExcelDownloadComponent],
+  declarations: [SnackbarComponent, ConfirmationDialogComponent, AddProjectDialogComponent, ExcelDownloadComponent, HeaderComponent],
   exports: [
     SnackbarComponent,
     ConfirmationDialogComponent,
     AddProjectDialogComponent,
     ExcelDownloadComponent,
     MatSnackBarModule,
+    HeaderComponent,
     MatButtonModule,
     MatCardModule,
     MatDialogModule,

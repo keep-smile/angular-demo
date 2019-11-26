@@ -1,7 +1,10 @@
-<header>
-  <h2 class="section-title " style="display: flex"><span style="flex-grow: 1; align-self: center;">{{sectionTitle}}</span><app-excel-download></app-excel-download></h2>
-
-</header>
+<app-header
+  [showBack]="false"
+  [showDivider]="false"
+  [headerTitle]="sectionTitle"
+>
+  <app-excel-download></app-excel-download>
+</app-header>
 <div *ngIf="students$ | async as students">
   <mat-list>
     <mat-list-item *ngFor="let student of students">
