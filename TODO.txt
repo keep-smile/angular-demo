@@ -1,7 +1,4 @@
 
-- Component Decomposition -> SectionTitle to Shared Components
-- Student avatar filename as part of the student
 - API Errors processing/handling
-- ToolTips
 - Bundle size optimization
 - Finish e2e and do some Unit Tests

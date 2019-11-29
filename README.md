@@ -1,6 +1,6 @@
 # Angular + Material Design Test Project
 
-- Basic two modules with Student and available Projects
+- Basic two modules with Students and available Projects
 - Material Design library
 - NGRX as Storage management mechanism
 - GitHub as hosting with deployment process
@@ -29,7 +29,6 @@ Data download as XLSX file
 
 #### Known issues
 
-- Not refactored - code duplication
 - Poor Mat Design implementation
 - Poor Mobile adaptation
 - Poor CSS usage and structure
