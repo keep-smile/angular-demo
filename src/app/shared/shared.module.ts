@@ -11,17 +11,19 @@ import {
   MatDividerModule,
   MatIconModule,
   MatInputModule,
-  MatListModule,
+  MatListModule, MatProgressSpinnerModule,
   MatSnackBarModule
 } from '@angular/material';
 import {AddProjectDialogComponent} from './add-project-dialog/add-project-dialog.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ExcelDownloadComponent} from './excel-download/excel-download.component';
 import { HeaderComponent } from './header/header.component';
+import { ApiErrorComponent } from './api-error/api-error.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 @NgModule({
-  declarations: [SnackbarComponent, ConfirmationDialogComponent, AddProjectDialogComponent, ExcelDownloadComponent, HeaderComponent],
+  declarations: [SnackbarComponent, ConfirmationDialogComponent, AddProjectDialogComponent, ExcelDownloadComponent, HeaderComponent, ApiErrorComponent, LoaderComponent],
   exports: [
     SnackbarComponent,
     ConfirmationDialogComponent,
@@ -34,10 +36,12 @@ import { HeaderComponent } from './header/header.component';
     MatDialogModule,
     MatIconModule,
     MatDividerModule,
+    LoaderComponent,
     MatListModule],
 
   imports: [
     CommonModule,
+    MatProgressSpinnerModule,
     MatInputModule,
     MatCardModule,
     MatSnackBarModule,

@@ -39,7 +39,6 @@ export class ProjectsEffects {
       (action) => this.apiService.saveProjects(action[1])
         .pipe(
           map(val => {
-            console.log('triggers success action');
             return (new SaveProjectsSuccess());
           }),
           catchError((errorMessage) => of(new LoadProjectsError({error: errorMessage})))

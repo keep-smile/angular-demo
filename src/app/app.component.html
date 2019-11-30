@@ -1,7 +1,7 @@
 <div class="layout">
-  <mat-spinner *ngIf="loading" [color]="'black'"></mat-spinner>
   <app-toolbar></app-toolbar>
   <main>
+    <app-loader [loading]="loading"></app-loader>
     <router-outlet ></router-outlet>
   </main>
 </div>

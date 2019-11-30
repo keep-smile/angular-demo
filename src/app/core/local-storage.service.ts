@@ -63,15 +63,12 @@ export class LocalStorageService {
   getProjects(): Observable<Project[]> | null {
     return new Observable(observer => {
       setTimeout(() => {
-        // if (!this.get('failedRequest')) {
-        //   // this.set('failedRequest', true);
-        //   return throwError('Ok, it happens. Let\'s try again');
-        // } else {
-        //   observer.next(
-        //     this.get('projects')
-        //   );
-        // }
-
+        if (!this.get('failedRequest')) {
+          this.set('failedRequest', true);
+          observer.error(
+            new Error('404')
+          );
+        }
         observer.next(
           this.get('projects')
         );

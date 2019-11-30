@@ -19,7 +19,6 @@ import {StudentsModule} from '../students/students.module';
   ],
   exports: [
     ToolbarComponent,
-    MatProgressSpinnerModule,
     FooterComponent,
   ],
   providers: [
@@ -27,7 +26,6 @@ import {StudentsModule} from '../students/students.module';
   ],
   imports: [
     SharedModule,
-    MatProgressSpinnerModule,
     CommonModule,
     MatToolbarModule,
     StudentsModule,

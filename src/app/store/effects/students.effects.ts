@@ -28,8 +28,6 @@ export class StudentsEffects {
             return (new LoadStudentsSuccess({students}));
           }),
           catchError((errorMessage) => {
-            console.log('error triggered', errorMessage);
-
             return of(new LoadStudentsError({error: errorMessage}));
           })
         ))

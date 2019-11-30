@@ -1,0 +1,4 @@
+<div class="loader-wrapper" *ngIf="loading || errorMessage">
+  <mat-spinner *ngIf="loading && !errorMessage" [color]="'black'"></mat-spinner>
+  <app-api-error *ngIf="errorMessage" >{{errorMessage}}</app-api-error>
+</div>

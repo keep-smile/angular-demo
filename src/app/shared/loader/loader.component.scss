@@ -1,0 +1,11 @@
+.loader-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 70vh;
+}
+
+div > mat-spinner {
+  transition: all 1.8s ease;
+}
