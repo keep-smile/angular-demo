@@ -1,4 +1,2 @@
-
-- API Errors processing/handling
 - Bundle size optimization
 - Finish e2e and do some Unit Tests

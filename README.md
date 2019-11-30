@@ -41,7 +41,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
 Run `ng build` to build the project.
 
-Run `npm run deploy` to build project in prod mode and push to the GitHub pages service repository ( will not work without permissions )
+Run `npm run deploy` to build project in prod mode and push to the GitHub pages service repository
 
 Run `ng test` to run Karma test routine. 
 
