@@ -1,11 +1,11 @@
 {
   "name": "students-projects",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "deploy": "npm run build; mv -f ./dist/angular-test/* ./deployment; cd ./deployment; git add .; git commit -a -m 'Deploying ...'; git push; ",
+    "deploy": "npm run build; mv -f ./dist/angular-test/* ./deployment; cd ./deployment; git add .; git commit -a -m 'Deploying ..'; git push; ",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
