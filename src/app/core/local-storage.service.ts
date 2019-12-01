@@ -66,7 +66,7 @@ export class LocalStorageService {
         if (!this.get('failedRequest')) {
           this.set('failedRequest', true);
           observer.error(
-            new Error('404')
+            new Error('426')
           );
         }
         observer.next(
